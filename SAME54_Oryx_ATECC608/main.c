@@ -701,19 +701,3 @@ int main(void)
 	//This function should never return
 	return 0;
 }
-
-
-/*
- * Dummy function to work around the error 
- * "undefined reference to _write"
- * and "undefined reference to _read"
-*/
-int _read (int file, char *ptr, int len)
-{
-	return (1);
-}
-
-int _write(int file,char *ptr,int len)
-{
-	return len;
-}
