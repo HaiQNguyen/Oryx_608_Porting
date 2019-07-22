@@ -12,6 +12,8 @@
 extern "C" {
 #endif
 
+void TARGET_IO_example(void);
+
 #ifdef __cplusplus
 }
 #endif

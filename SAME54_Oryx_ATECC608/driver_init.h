@@ -21,6 +21,14 @@ extern "C" {
 #include <hal_io.h>
 #include <hal_sleep.h>
 
+#include <hal_usart_sync.h>
+
+extern struct usart_sync_descriptor TARGET_IO;
+
+void TARGET_IO_PORT_init(void);
+void TARGET_IO_CLOCK_init(void);
+void TARGET_IO_init(void);
+
 /**
  * \brief Perform system initialization, initialize pins and clocks for
  * peripherals
