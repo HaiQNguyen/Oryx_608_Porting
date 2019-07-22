@@ -647,7 +647,7 @@ drivers:
       gclk_arch_gen_9_runstdby: false
       gclk_gen_0_div: 1
       gclk_gen_0_div_sel: false
-      gclk_gen_0_oscillator: 32kHz External Crystal Oscillator (XOSC32K)
+      gclk_gen_0_oscillator: Digital Frequency Locked Loop (DFLL48M)
       gclk_gen_10_div: 1
       gclk_gen_10_div_sel: false
       gclk_gen_10_oscillator: External Crystal Oscillator 8-48MHz (XOSC1)
