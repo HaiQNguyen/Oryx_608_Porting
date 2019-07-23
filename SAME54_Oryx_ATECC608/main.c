@@ -677,6 +677,8 @@ int main(void)
 	ipv6SetDnsServer(interface, 1, &ipv6Addr);
 #endif
 #endif
+
+
 	//Create MQTT test task
 	task = osCreateTask("MQTT", mqttTestTask, NULL, 750, OS_TASK_PRIORITY_NORMAL);
 	//Failed to create the task?
@@ -696,8 +698,12 @@ int main(void)
 	}
 
 	//Start the execution of tasks
+	TRACE_INFO("before OSKernelStart\r\n");
 	osStartKernel();
-
+	TRACE_INFO("after OSKernelStart\r\n");
+	while(1){
+	error = 0;
+	}
 	//This function should never return
 	return 0;
 }

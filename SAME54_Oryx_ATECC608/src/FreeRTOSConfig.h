@@ -125,7 +125,7 @@ NVIC value of 255. */
 /* Redefine functions names to match the standard peripheral library */
 #define xPortSysTickHandler     SysTick_Handler
 #define xPortPendSVHandler      PendSV_Handler
-#define vPortSVCHandler         SVC_Handler
+#define vPortSVCHandler         SVCall_Handler
 
 #endif /* FREERTOS_CONFIG_H */
 

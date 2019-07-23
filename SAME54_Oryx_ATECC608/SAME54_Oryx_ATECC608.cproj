@@ -310,6 +310,7 @@
       <Value>DEBUG</Value>
       <Value>_WINSOCK_H</Value>
       <Value>USE_SAME54_XPLAINED_PRO</Value>
+      <Value>__SAME54P20A__</Value>
     </ListValues>
   </armgcc.compiler.symbols.DefSymbols>
   <armgcc.compiler.directories.IncludePaths>
@@ -345,7 +346,6 @@
       <Value>%24(PackRepoDir)\Atmel\SAME54_DFP\1.1.134\include</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
-  <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
   <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
   <armgcc.compiler.optimization.DebugLevel>Maximum (-g3)</armgcc.compiler.optimization.DebugLevel>
   <armgcc.compiler.warnings.AllWarnings>True</armgcc.compiler.warnings.AllWarnings>
@@ -2830,15 +2830,6 @@
     <Compile Include="third_party\atmel\devices\same54\instance\wdt.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="third_party\atmel\devices\same54\pio\same54n19a.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\atmel\devices\same54\pio\same54n20a.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\atmel\devices\same54\pio\same54p19a.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="third_party\atmel\devices\same54\pio\same54p20a.h">
       <SubType>compile</SubType>
     </Compile>
@@ -2953,37 +2944,10 @@
     <Compile Include="third_party\atmel\devices\same54\pukcc\CryptoLib_ZpEcDsa_pb.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="third_party\atmel\devices\same54\same54.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\atmel\devices\same54\same54n19a.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\atmel\devices\same54\same54n20a.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\atmel\devices\same54\same54p19a.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\atmel\devices\same54\same54p20a.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\atmel\devices\same54\system_same54.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="third_party\freertos\croutine.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="third_party\freertos\event_groups.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="third_party\freertos\include\croutine.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\freertos\include\deprecated_definitions.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\freertos\include\event_groups.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="third_party\freertos\include\FreeRTOS.h">
@@ -2993,12 +2957,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="third_party\freertos\include\message_buffer.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\freertos\include\mpu_prototypes.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\freertos\include\mpu_wrappers.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="third_party\freertos\include\portable.h">
@@ -3013,13 +2971,7 @@
     <Compile Include="third_party\freertos\include\semphr.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="third_party\freertos\include\StackMacros.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="third_party\freertos\include\stack_macros.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\freertos\include\stream_buffer.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="third_party\freertos\include\task.h">
@@ -3029,9 +2981,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="third_party\freertos\list.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\freertos\portable\common\mpu_wrappers.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="third_party\freertos\portable\gcc\arm_cm4f\port.c">
@@ -3044,9 +2993,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="third_party\freertos\queue.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="third_party\freertos\stream_buffer.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="third_party\freertos\tasks.c">
@@ -3143,7 +3089,6 @@
     <Folder Include="third_party\freertos\" />
     <Folder Include="third_party\freertos\include\" />
     <Folder Include="third_party\freertos\portable\" />
-    <Folder Include="third_party\freertos\portable\common\" />
     <Folder Include="third_party\freertos\portable\gcc\" />
     <Folder Include="third_party\freertos\portable\gcc\arm_cm4f\" />
     <Folder Include="third_party\freertos\portable\memmang\" />

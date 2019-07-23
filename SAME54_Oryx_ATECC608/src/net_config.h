@@ -100,12 +100,12 @@
 #define IGMP_SUPPORT ENABLED
 
 //IPv6 support
-#define IPV6_SUPPORT ENABLED
+#define IPV6_SUPPORT DISABLED
 //Size of the IPv6 multicast filter
 #define IPV6_MULTICAST_FILTER_SIZE 8
 
 //IPv6 fragmentation support
-#define IPV6_FRAG_SUPPORT ENABLED
+#define IPV6_FRAG_SUPPORT DISABLED
 //Maximum number of fragmented packets the host will accept
 //and hold in the reassembly queue simultaneously
 #define IPV6_MAX_FRAG_DATAGRAMS 4
