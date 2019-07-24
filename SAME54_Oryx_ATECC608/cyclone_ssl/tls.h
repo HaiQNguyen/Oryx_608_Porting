@@ -229,7 +229,7 @@ struct _TlsContext;
 
 //ECC callback functions
 #ifndef TLS_ECC_CALLBACK_SUPPORT
-   #define TLS_ECC_CALLBACK_SUPPORT DISABLED
+   #define TLS_ECC_CALLBACK_SUPPORT 1
 #elif (TLS_ECC_CALLBACK_SUPPORT != ENABLED && TLS_ECC_CALLBACK_SUPPORT != DISABLED)
    #error TLS_ECC_CALLBACK_SUPPORT parameter is not valid
 #endif

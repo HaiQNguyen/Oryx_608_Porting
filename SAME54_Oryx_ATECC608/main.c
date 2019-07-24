@@ -12,6 +12,17 @@
 #include "rng/yarrow.h"
 #include "debug.h"
 
+#include "cryptoauthlib.h"
+#include "atca_host.h"
+#include "tng_atca.h"
+#include "tng_atcacert_client.h"
+#include "atcacert_pem.h"
+#include "atcacert\atcacert_host_hw.h"
+#include "tngtn_cert_def_1_signer.h"
+#include "tngtn_cert_def_2_device.h"
+#include "lib\tls\atcatls.h"
+#include "lib\tls\atcatls_cfg.h"
+
 /* Define section ---------------------------------------------------*/
 
 
@@ -36,6 +47,17 @@
 #define APP_IPV6_PRIMARY_DNS "2001:4860:4860::8888"
 #define APP_IPV6_SECONDARY_DNS "2001:4860:4860::8844"
 
+
+/* Define section ---------------------------------------------------*/
+#define CHECK_STATUS(s)										\
+if(s != ATCA_SUCCESS) {										\
+	printf("status code: 0x%x\r\n", s);						\
+	printf("Error: Line %d in %s\r\n", __LINE__, __FILE__); \
+	while(1);												\
+}
+
+
+
 //MQTT server name
 #define APP_SERVER_NAME "iot.eclipse.org"
 
@@ -50,7 +72,20 @@
 
 
 /* Local variable section --------------------------------------------*/
+ATCAIfaceCfg cfg_ateccx08a_i2c_device = {
+	.iface_type				= ATCA_I2C_IFACE,
+	.devtype				= ATECC608A,
+	.atcai2c.slave_address	= 0x6A,
+	.atcai2c.bus			= 1,
+	.atcai2c.baud			= 400000,
+	.wake_delay				= 800,
+	.rx_retries				= 20,
+	.cfg_data              = &I2C_0
+};
 
+volatile ATCA_STATUS status;
+tng_type_t t = TNGTYPE_22;
+uint8_t serial_number[ATCA_SERIAL_NUM_SIZE];
 
 //List of trusted CA certificates
 char_t trustedCaList[] =
@@ -90,8 +125,14 @@ uint8_t seed[32];
 
 
 /* Local function prototype section ----------------------------------*/
+void print_bytes(uint8_t * ptr, uint8_t length);
+error_t ecc508aEcdhCallback(TlsContext *context);
 
+error_t ecc508aEcdsaSignCallback(TlsContext *context,
+									const uint8_t *digest, size_t digestLength, EcdsaSignature *signature);
 
+error_t ecc508aEcdsaVerifyCallback(TlsContext *context,
+									const uint8_t *digest, size_t digestLength, EcdsaSignature *signature);
 
 /**
  * @brief I/O initialization
@@ -136,27 +177,66 @@ error_t mqttTestTlsInitCallback(MqttClientContext *context,
    TlsContext *tlsContext)
 {
    error_t error;
+	//Debug message
+	TRACE_INFO("MQTT: TLS initialization callback\r\n");
 
-   //Debug message
-   TRACE_INFO("MQTT: TLS initialization callback\r\n");
+	//Set the PRNG algorithm to be used
+	error = tlsSetPrng(tlsContext, YARROW_PRNG_ALGO, &yarrowContext);
+	//Any error to report?
+	if(error)
+	return error;
+	  
+#if (TLS_ECC_CALLBACK_SUPPORT == 1)
+	//Register ECDH key agreement callback function
+	error = tlsSetEcdhCallback(tlsContext, ecc508aEcdhCallback);
+	//Any error to report?
+	if(error)
+		return error;
 
-   //Set the PRNG algorithm to be used
-   error = tlsSetPrng(tlsContext, YARROW_PRNG_ALGO, &yarrowContext);
-   //Any error to report?
-   if(error)
-      return error;
+	//Register ECDSA signature generation callback function
+	error = tlsSetEcdsaSignCallback(tlsContext, ecc508aEcdsaSignCallback);
+	//Any error to report?
+	if(error)
+		return error;
 
-   //Set the fully qualified domain name of the server
-   error = tlsSetServerName(tlsContext, APP_SERVER_NAME);
-   //Any error to report?
-   if(error)
-      return error;
+	//Register ECDSA signature verification callback function
+	error = tlsSetEcdsaVerifyCallback(tlsContext, ecc508aEcdsaVerifyCallback);
+	//Any error to report?
+	if(error)
+		return error;
 
-   //Import the list of trusted CA certificates
-   error = tlsSetTrustedCaList(tlsContext, trustedCaList, strlen(trustedCaList));
-   //Any error to report?
-   if(error)
-      return error;
+	//Set the fully qualified domain name of the server
+	error = tlsSetServerName(tlsContext, APP_SERVER_NAME);
+	//Any error to report?
+	if(error)
+		return error;
+
+	//Import the list of trusted CA certificates
+	error = tlsSetTrustedCaList(tlsContext, trustedCaList, strlen(trustedCaList));
+	//Any error to report?
+	if(error)
+		return error;
+
+	//TODO
+	
+	//Import the client's certificate
+	//error = tlsAddCertificate(tlsContext, xxxxxxxxxxxxxx, xxxxxxxxxxxxxx, NULL, 0);
+	//Any error to report?
+	if(error)
+		return error;
+#else
+	//Set the fully qualified domain name of the server
+	error = tlsSetServerName(tlsContext, APP_SERVER_NAME);
+	//Any error to report?
+	if(error)
+		return error;
+
+	//Import the list of trusted CA certificates
+	error = tlsSetTrustedCaList(tlsContext, trustedCaList, strlen(trustedCaList));
+	//Any error to report?
+	if(error)
+		return error;
+#endif
 
    //Successful processing
    return NO_ERROR;
@@ -467,7 +547,36 @@ int main(void)
 	TRACE_INFO("Compiled: %s %s\r\n", __DATE__, __TIME__);
 	TRACE_INFO("Target: SAME54\r\n");
 	TRACE_INFO("\r\n");
-
+	
+	printf("Authentication in progress\n\r");
+	
+	status = atcab_init( &cfg_ateccx08a_i2c_device );
+	CHECK_STATUS(status);
+	
+	status = tng_get_type(&t);
+	CHECK_STATUS(status);
+	
+	switch (t){
+		case TNGTYPE_22:
+		printf("type: 22\r\n");
+		break;
+		case TNGTYPE_TN:
+		printf("type: TN\r\n");
+		break;
+		case TNGTYPE_UNKNOWN:
+		printf("unknown\r\n");
+		break;
+	}
+	
+	printf("Device init complete\n\r");
+	
+	status = atcab_read_serial_number((uint8_t*)&serial_number);
+	CHECK_STATUS(status);
+	
+	printf("Serial Number of host\r\n");
+	print_bytes((uint8_t*)&serial_number, 9);
+	printf("\r\n");
+	
 	//Configure I/Os
 	ioInit();
 
@@ -706,4 +815,247 @@ int main(void)
 	}
 	//This function should never return
 	return 0;
+}
+
+void print_bytes(uint8_t * ptr, uint8_t length)
+{
+	
+	uint8_t i = 0;
+	uint8_t line_count = 0;
+	for(;i < length; i++) {
+		printf("0x%02x, ",ptr[i]);
+		line_count++;
+		if(line_count == 8) {
+			printf("\r\n");
+			line_count = 0;
+		}
+	}
+	
+	printf("\r\n");
+}
+
+
+error_t ecc508aEcdhCallback(TlsContext *context)
+{
+   error_t error;
+   uint8_t qa[ATCA_PUB_KEY_SIZE];
+   uint8_t qb[ATCA_PUB_KEY_SIZE];
+   uint8_t s[ATCA_KEY_SIZE];
+   ATCA_STATUS status;
+
+   //Debug message
+   TRACE_INFO("ECC608A ECDH callback\r\n");
+
+   //NIST-P256 elliptic curve?
+   if(context->ecdhContext.params.type == EC_CURVE_TYPE_SECP_R1 &&
+      mpiGetBitLength(&context->ecdhContext.params.p) == 256)
+   {
+      //Convert the x-coordinate of the peer's public key to an octet string
+      error = mpiWriteRaw(&context->ecdhContext.qb.x, qb, 32);
+
+      //Check status code
+      if(!error)
+      {
+         //Convert the y-coordinate of the peer's public key to an octet string
+         error = mpiWriteRaw(&context->ecdhContext.qb.y, qb + 32, 32);
+      }
+
+      //Check status code
+      if(!error)
+      {
+         //Debug message
+         TRACE_DEBUG_ARRAY("  qb: ", qb, ATCA_PUB_KEY_SIZE);
+
+         //Perform ECDH key exchange
+         status = atcatls_ecdhe(TLS_SLOT_ECDHE_PRIV, qb, qa, s);
+
+         //Debug message
+         TRACE_INFO("atcatls_ecdhe = %u\r\n", status);
+         TRACE_DEBUG_ARRAY("  qa: ", qa, ATCA_PUB_KEY_SIZE);
+         TRACE_DEBUG_ARRAY("  s: ", s, ATCA_KEY_SIZE);
+
+         //Successful operation?
+         if(status == ATCA_SUCCESS)
+         {
+            //Save the shared secret
+            memcpy(context->premasterSecret, s, 32);
+            context->premasterSecretLen = 32;
+
+            //Convert the x-coordinate of our public key to an octet string
+            error = mpiReadRaw(&context->ecdhContext.qa.x, qa, 32);
+            
+            //Check status code
+            if(!error)
+            {
+               //Convert the y-coordinate of our public key to an octet string
+               error = mpiReadRaw(&context->ecdhContext.qa.y, qa + 32, 32);
+            }
+         }
+         else
+         {
+            //Failed to perform ECDH key exchange
+            error = ERROR_FAILURE;
+         }
+      }
+   }
+   else
+   {
+      //The specified elliptic curve is not supported
+      error = ERROR_UNSUPPORTED_ELLIPTIC_CURVE;
+   }
+
+   //Return status code
+   return error;
+}
+
+
+/**
+ * @brief ECDSA signature generation callback function
+ **/
+
+error_t ecc508aEcdsaSignCallback(TlsContext *context,
+   const uint8_t *digest, size_t digestLength, EcdsaSignature *signature)
+{
+   error_t error;
+   ATCA_STATUS status;
+   uint8_t sig[ATCA_SIG_SIZE];
+
+   //Debug message
+   TRACE_INFO("ECC608A ECDSA signature generation callback\r\n");
+   TRACE_DEBUG("  digest:\r\n");
+   TRACE_DEBUG_ARRAY("    ", digest, digestLength);
+
+   //SHA-256 hash algorithm?
+   if(context->signHashAlgo == TLS_HASH_ALGO_SHA256 &&
+      digestLength == SHA256_DIGEST_SIZE)
+   {
+      //Generate an ECDSA signature using the client's private key
+      status = atcatls_sign(TLS_SLOT_AUTH_PRIV, digest, sig);
+
+      //Debug message
+      TRACE_INFO("atcatls_sign = %u\r\n", status);
+      TRACE_INFO_ARRAY("  ", sig, ATCA_SIG_SIZE);
+
+      //Successful operation?
+      if(status == ATCA_SUCCESS)
+      {
+         //Convert R to a multiple precision integer
+         error = mpiReadRaw(&signature->r, sig, ATCA_SIG_SIZE / 2);
+
+         //Check status code
+         if(!error)
+         {
+            //Convert S to a multiple precision integer
+            error = mpiReadRaw(&signature->s,
+               sig + ATCA_SIG_SIZE / 2, ATCA_SIG_SIZE / 2);
+         }
+
+         //Check status code
+         if(!error)
+         {
+            //Debug message
+            TRACE_DEBUG_MPI("r:  ", &signature->r);
+            TRACE_DEBUG_MPI("s:  ", &signature->s);
+         }
+      }
+      else
+      {
+         //Failed to generate ECDSA signature
+         error = ERROR_FAILURE;
+      }
+   }
+   else
+   {
+      //The specified hash algorithm is not supported
+      error = ERROR_UNSUPPORTED_HASH_ALGO;
+   }
+
+   //Return status code
+   return error;
+}
+
+
+/**
+ * @brief ECDSA signature verification callback function
+ **/
+
+error_t ecc508aEcdsaVerifyCallback(TlsContext *context,
+   const uint8_t *digest, size_t digestLength, EcdsaSignature *signature)
+{
+   error_t error;
+   ATCA_STATUS status;
+   uint8_t sig[ATCA_SIG_SIZE];
+   uint8_t pubKey[ATCA_PUB_KEY_SIZE];
+   bool verified;
+
+   //Debug message
+   TRACE_INFO("ECC608A ECDSA signature verification callback\r\n");
+   TRACE_DEBUG("  digest:\r\n");
+   TRACE_DEBUG_ARRAY("    ", digest, digestLength);
+   
+   //NIST-P256 elliptic curve?
+   if(context->peerEcParams.type == EC_CURVE_TYPE_SECP_R1 &&
+      mpiGetBitLength(&context->peerEcParams.p) == 256)
+   {
+      if(digestLength == SHA256_DIGEST_SIZE)
+      {
+         //Convert R to an octet string
+         error = mpiWriteRaw(&signature->r, sig, ATCA_SIG_SIZE / 2);
+
+         //Check status code
+         if(!error)
+         {
+            //Convert S to an octet string
+            error = mpiWriteRaw(&signature->s,
+               sig + ATCA_SIG_SIZE / 2, ATCA_SIG_SIZE / 2);
+         }
+         
+         //Check status code
+         if(!error)
+         {
+            //Convert the x-coordinate of the public key to an octet string
+            error = mpiWriteRaw(&context->peerEcPublicKey.x, pubKey,
+               ATCA_PUB_KEY_SIZE / 2);
+         }
+
+         //Check status code
+         if(!error)
+         {
+            //Convert the y-coordinate of the public key to an octet string
+            error = mpiWriteRaw(&context->peerEcPublicKey.y,
+               pubKey + ATCA_PUB_KEY_SIZE / 2, ATCA_PUB_KEY_SIZE / 2);
+         }
+         
+         //Check status code
+         if(!error)
+         {
+            //Verify the ECDSA signature
+            status = atcatls_verify(digest, sig, pubKey, &verified);  
+
+            //Debug message
+            TRACE_INFO("atcatls_verify = %u,%u\r\n", status, verified);
+            TRACE_INFO_ARRAY("  ", sig, ATCA_SIG_SIZE);
+
+            //Failed to verify ECDSA signature?
+            if(status != ATCA_SUCCESS || !verified)
+            {
+               //Report an error
+               error = ERROR_FAILURE;
+            }
+         }
+      }
+      else
+      {
+         //The specified hash algorithm is not supported
+         error = ERROR_UNSUPPORTED_HASH_ALGO;
+      }
+   }
+   else
+   {
+      //The specified elliptic curve is not supported
+      error = ERROR_UNSUPPORTED_ELLIPTIC_CURVE;
+   }
+
+   //Return status code
+   return error;
 }

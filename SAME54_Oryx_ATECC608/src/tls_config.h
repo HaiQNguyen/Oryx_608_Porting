@@ -32,7 +32,7 @@
 #define _TLS_CONFIG_H
 
 //Desired trace level (for debugging purposes)
-#define TLS_TRACE_LEVEL TRACE_LEVEL_INFO
+#define TLS_TRACE_LEVEL TRACE_LEVEL_DEBUG
 
 //TLS support
 #define TLS_SUPPORT ENABLED
@@ -218,5 +218,8 @@
 #define TLS_ED25519_SUPPORT ENABLED
 //Ed448 elliptic curve support
 #define TLS_ED448_SUPPORT DISABLED
+
+
+
 
 #endif

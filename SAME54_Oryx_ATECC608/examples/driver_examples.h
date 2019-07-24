@@ -14,6 +14,8 @@ extern "C" {
 
 void TARGET_IO_example(void);
 
+void I2C_0_example(void);
+
 #ifdef __cplusplus
 }
 #endif

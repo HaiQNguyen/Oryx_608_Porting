@@ -23,11 +23,19 @@ extern "C" {
 
 #include <hal_usart_sync.h>
 
+#include <hal_i2c_m_sync.h>
+
 extern struct usart_sync_descriptor TARGET_IO;
+
+extern struct i2c_m_sync_desc I2C_0;
 
 void TARGET_IO_PORT_init(void);
 void TARGET_IO_CLOCK_init(void);
 void TARGET_IO_init(void);
+
+void I2C_0_CLOCK_init(void);
+void I2C_0_init(void);
+void I2C_0_PORT_init(void);
 
 /**
  * \brief Perform system initialization, initialize pins and clocks for

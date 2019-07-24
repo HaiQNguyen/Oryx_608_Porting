@@ -54,6 +54,7 @@
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_cache.h" IsConfig="false" Hash="QZIIDRbUdkb2aDtNopQSOA" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_delay.h" IsConfig="false" Hash="snalDV+S1QGquCV38zAdoA" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_gpio.h" IsConfig="false" Hash="3mBEQ9Ix28YOArddDes83Q" />
+          <AcmeProjectActionInfo Action="File" Source="hal/include/hal_i2c_m_sync.h" IsConfig="false" Hash="wYjgBbVVd/11drj/bh4EaQ" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_init.h" IsConfig="false" Hash="OrYSVpF3YA5XrOBImWpdSg" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_io.h" IsConfig="false" Hash="XZRSabc39WU/0MFBLYGLvQ" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_sleep.h" IsConfig="false" Hash="KuZDwgrLdU+fuMG82ZFTqg" />
@@ -78,6 +79,7 @@
           <AcmeProjectActionInfo Action="File" Source="hal/src/hal_cache.c" IsConfig="false" Hash="edUfxCb3WSV4Uu3oKUakCg" />
           <AcmeProjectActionInfo Action="File" Source="hal/src/hal_delay.c" IsConfig="false" Hash="vZ+YYOpHjTcAZaAaTE3Izg" />
           <AcmeProjectActionInfo Action="File" Source="hal/src/hal_gpio.c" IsConfig="false" Hash="wIzN9zQd1b8qd+RDoSkD7Q" />
+          <AcmeProjectActionInfo Action="File" Source="hal/src/hal_i2c_m_sync.c" IsConfig="false" Hash="rXHlXpjvdMJ9o6yJQwR90g" />
           <AcmeProjectActionInfo Action="File" Source="hal/src/hal_init.c" IsConfig="false" Hash="bJvq8kpNbbOE2nZfChOGTQ" />
           <AcmeProjectActionInfo Action="File" Source="hal/src/hal_io.c" IsConfig="false" Hash="FYpavzYSxhFzVrBQtcH2ZA" />
           <AcmeProjectActionInfo Action="File" Source="hal/src/hal_sleep.c" IsConfig="false" Hash="3ebghfB3jYLpnqoi3fhq3g" />
@@ -141,11 +143,11 @@
           <AcmeProjectActionInfo Action="File" Source="stdio_redirect/stdio_io.c" IsConfig="false" Hash="Nx8PfIAymK/f5AjLql/CyQ" />
           <AcmeProjectActionInfo Action="File" Source="stdio_redirect/stdio_io.h" IsConfig="false" Hash="4X02f8UL8cjBHeGJM3BnHw" />
           <AcmeProjectActionInfo Action="File" Source="main.c" IsConfig="false" Hash="k0AH7j+BrmdFhBPzCCMptA" />
-          <AcmeProjectActionInfo Action="File" Source="driver_init.c" IsConfig="false" Hash="j+5dbvzGs+IfC+SJu2lgZQ" />
-          <AcmeProjectActionInfo Action="File" Source="driver_init.h" IsConfig="false" Hash="T1jvJRJ2gPRrjURFKVCKng" />
-          <AcmeProjectActionInfo Action="File" Source="atmel_start_pins.h" IsConfig="false" Hash="2ELzEZr5qCrcl/LukTu5dA" />
-          <AcmeProjectActionInfo Action="File" Source="examples/driver_examples.h" IsConfig="false" Hash="Rmw7b009Kyb5JTTerAW1RA" />
-          <AcmeProjectActionInfo Action="File" Source="examples/driver_examples.c" IsConfig="false" Hash="hJRkmFqpagOYpFy3c2hJKg" />
+          <AcmeProjectActionInfo Action="File" Source="driver_init.c" IsConfig="false" Hash="Cs6uRTtef6kvwzq3Vjm1bg" />
+          <AcmeProjectActionInfo Action="File" Source="driver_init.h" IsConfig="false" Hash="tv1ZeCWcaxx7RuHVC+ZpUQ" />
+          <AcmeProjectActionInfo Action="File" Source="atmel_start_pins.h" IsConfig="false" Hash="uAjLfBSOk+d4IBkBorxNPw" />
+          <AcmeProjectActionInfo Action="File" Source="examples/driver_examples.h" IsConfig="false" Hash="rPlikp+DK+MosdtblZUwFg" />
+          <AcmeProjectActionInfo Action="File" Source="examples/driver_examples.c" IsConfig="false" Hash="VZWLEbkkxcz327mspeIt/w" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hal_usart_sync.h" IsConfig="false" Hash="ZzIGSRyjZuxRzFAtNNt7sw" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hpl_missing_features.h" IsConfig="false" Hash="XsAvpgfutzkw0Y5SydYFaw" />
           <AcmeProjectActionInfo Action="File" Source="hal/include/hpl_reset.h" IsConfig="false" Hash="WwLFRlBtuZ/qnD1JuDKnRQ" />
@@ -184,8 +186,8 @@
           <AcmeProjectActionInfo Action="File" Source="config/hpl_osc32kctrl_config.h" IsConfig="true" Hash="TSacbnJ95QfPDRd99RDdxw" />
           <AcmeProjectActionInfo Action="File" Source="config/hpl_oscctrl_config.h" IsConfig="true" Hash="AmhSTyVr9FQBGxS2EypbYg" />
           <AcmeProjectActionInfo Action="File" Source="config/hpl_port_config.h" IsConfig="true" Hash="5iQ/eeupKkHFkYA/g43bXQ" />
-          <AcmeProjectActionInfo Action="File" Source="config/hpl_sercom_config.h" IsConfig="true" Hash="Zke7CJ2HIoi89R99l2ndPA" />
-          <AcmeProjectActionInfo Action="File" Source="config/peripheral_clk_config.h" IsConfig="true" Hash="ijvLWVIR/FE4SxuIe5ikXA" />
+          <AcmeProjectActionInfo Action="File" Source="config/hpl_sercom_config.h" IsConfig="true" Hash="wMvMO8JZVL8gPkHrh9KJ+A" />
+          <AcmeProjectActionInfo Action="File" Source="config/peripheral_clk_config.h" IsConfig="true" Hash="03SduAeqBBTTi+Lvjbm6Pg" />
           <AcmeProjectActionInfo Action="File" Source="config/stdio_redirect_config.h" IsConfig="true" Hash="CKmkBk12sfr7mb+HRQBuzg" />
         </AcmeActionInfos>
         <NonsecureFilesInfo />
@@ -311,6 +313,7 @@
       <Value>_WINSOCK_H</Value>
       <Value>USE_SAME54_XPLAINED_PRO</Value>
       <Value>__SAME54P20A__</Value>
+      <Value>ATCA_HAL_I2C</Value>
     </ListValues>
   </armgcc.compiler.symbols.DefSymbols>
   <armgcc.compiler.directories.IncludePaths>
@@ -344,6 +347,15 @@
       <Value>../hri</Value>
       <Value>../stdio_redirect</Value>
       <Value>%24(PackRepoDir)\Atmel\SAME54_DFP\1.1.134\include</Value>
+      <Value>../lib/atcacert</Value>
+      <Value>../lib/basic</Value>
+      <Value>../lib/crypto</Value>
+      <Value>../lib/hal</Value>
+      <Value>../lib/host</Value>
+      <Value>../lib/jwt</Value>
+      <Value>C:\Users\haing\Desktop\Project\SAME54_Oryx_ATECC608\SAME54_Oryx_ATECC608\lib\tng</Value>
+      <Value>../lib</Value>
+      <Value>../lib/tls</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>True</armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
@@ -2164,6 +2176,9 @@
     <Compile Include="hal\include\hal_gpio.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="hal\include\hal_i2c_m_sync.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="hal\include\hal_init.h">
       <SubType>compile</SubType>
     </Compile>
@@ -2264,6 +2279,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\src\hal_gpio.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="hal\src\hal_i2c_m_sync.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hal\src\hal_init.c">
@@ -2480,6 +2498,318 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="hri\hri_wdt_e54.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_client.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_client.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_date.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_date.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_def.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_def.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_der.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_der.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_host_hw.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_host_hw.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_host_sw.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_host_sw.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_pem.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atcacert\atcacert_pem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_bool.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_cfgs.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_cfgs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_command.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_command.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_compiler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_device.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_device.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_devtypes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_execution.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_execution.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_iface.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_iface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\atca_status.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_aes.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_aes_cbc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_aes_cmac.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_aes_ctr.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_aes_gcm.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_aes_gcm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_checkmac.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_counter.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_derivekey.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_ecdh.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_gendig.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_genkey.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_hmac.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_info.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_kdf.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_lock.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_mac.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_nonce.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_privwrite.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_random.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_read.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_secureboot.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_selftest.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_sha.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_sign.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_updateextra.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_verify.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_basic_write.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_helpers.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\basic\atca_helpers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\cryptoauthlib.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\atca_crypto_sw.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\atca_crypto_sw_ecdsa.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\atca_crypto_sw_ecdsa.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\atca_crypto_sw_rand.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\atca_crypto_sw_rand.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\atca_crypto_sw_sha1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\atca_crypto_sw_sha1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\atca_crypto_sw_sha2.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\atca_crypto_sw_sha2.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\hashes\sha1_routines.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\hashes\sha1_routines.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\hashes\sha2_routines.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\crypto\hashes\sha2_routines.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\hal\atca_hal.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\hal\atca_hal.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\hal\atca_start_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\hal\atca_start_iface.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\hal\hal_i2c_start.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\hal\hal_i2c_start.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\hal\hal_timer_start.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\host\atca_host.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\host\atca_host.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\jwt\atca_jwt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\jwt\atca_jwt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tls\atcatls.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tls\atcatls.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tls\atcatls_cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tls\atcatls_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tng22_cert_def_1_signer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tng22_cert_def_1_signer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tng22_cert_def_2_device.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tng22_cert_def_2_device.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tngtn_cert_def_1_signer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tngtn_cert_def_1_signer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tngtn_cert_def_2_device.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tngtn_cert_def_2_device.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tng_atca.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tng_atca.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tng_atcacert_client.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tng_atcacert_client.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tng_root_cert.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\tng\tng_root_cert.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
@@ -3072,6 +3402,16 @@
     <Folder Include="hpl\ramecc\" />
     <Folder Include="hpl\sercom\" />
     <Folder Include="hri\" />
+    <Folder Include="lib\" />
+    <Folder Include="lib\atcacert\" />
+    <Folder Include="lib\basic\" />
+    <Folder Include="lib\crypto\" />
+    <Folder Include="lib\crypto\hashes\" />
+    <Folder Include="lib\hal\" />
+    <Folder Include="lib\host\" />
+    <Folder Include="lib\jwt\" />
+    <Folder Include="lib\tls\" />
+    <Folder Include="lib\tng\" />
     <Folder Include="src\" />
     <Folder Include="stdio_redirect\" />
     <Folder Include="stdio_redirect\gcc\" />
@@ -3103,7 +3443,25 @@
     <None Include="documentation\stdio.rst">
       <SubType>compile</SubType>
     </None>
+    <None Include="hal\documentation\i2c_master_sync.rst">
+      <SubType>compile</SubType>
+    </None>
     <None Include="hal\documentation\usart_sync.rst">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="lib\basic\README.md">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="lib\CMakeLists.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="lib\crypto\README.md">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="lib\tls\ec_cert-508.csr">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="lib\tng\readme.md">
       <SubType>compile</SubType>
     </None>
   </ItemGroup>
