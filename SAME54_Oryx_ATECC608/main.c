@@ -88,47 +88,47 @@ volatile ATCA_STATUS status;
 tng_type_t t = TNGTYPE_22;
 uint8_t serial_number[ATCA_SERIAL_NUM_SIZE];
 //Certificate chain
-//char_t certChain[1600]=
-char_t certChain[] =
-"-----BEGIN CERTIFICATE-----"
-"MIIB9DCCAZugAwIBAgIQcK2Tvu8XByvn9asGTKZzmzAKBggqhkjOPQQDAjBPMSEw"
-"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
-"byBBdXRoZW50aWNhdGlvbiBTaWduZXIgRjYwMDAgFw0xOTAzMjkxODAwMDBaGA8y"
-"MDQ3MDMyOTE4MDAwMFowRjEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
-"SW5jMSEwHwYDVQQDDBgwMTIzNjFGRDVFQkRBQTA2MDEgQVRFQ0MwWTATBgcqhkjO"
-"PQIBBggqhkjOPQMBBwNCAATiV6oZwekAtQZQnCx1xaGn/+Jh27gYWYswIZ6rY8IF"
-"Iak0kAkTO70Nsq3slDmuKogg0qqhVRWPKXLvXUtZyq/Uo2AwXjAMBgNVHRMBAf8E"
-"AjAAMA4GA1UdDwEB/wQEAwIDiDAdBgNVHQ4EFgQUfA4Vdk/biF8UnjdMhFKFv+ic"
-"m1swHwYDVR0jBBgwFoAU+9yqEor6wbWSj82rEdsJPs9NvvYwCgYIKoZIzj0EAwID"
-"RwAwRAIgLKMCu07Zh48KQEILHgcPPR6PE/PNiNzLAjei3nleUJ8CIAqGhGdsDmC7"
-"qJIgF+XsQBgr67OV0+zCMVTrUyd5pCqr"
-"-----END CERTIFICATE-----"
-"-----BEGIN CERTIFICATE-----"
-"MIICBTCCAaqgAwIBAgIQeQqn1X1z3OltZdtmi3ayXjAKBggqhkjOPQQDAjBPMSEw"
-"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
-"byBBdXRoZW50aWNhdGlvbiBSb290IENBIDAwMjAgFw0xODEyMTQxOTAwMDBaGA8y"
-"MDQ5MTIxNDE5MDAwMFowTzEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
-"SW5jMSowKAYDVQQDDCFDcnlwdG8gQXV0aGVudGljYXRpb24gU2lnbmVyIEY2MDAw"
-"WTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAR2R0FwsmPnmVS8hbsS6f5wDFuN1NaT"
-"RZjCKadoAg5OC21IddDtoe72X5FfxrEWRsWhymMfYlVodEdpxd6DtYlqo2YwZDAO"
-"BgNVHQ8BAf8EBAMCAYYwEgYDVR0TAQH/BAgwBgEB/wIBADAdBgNVHQ4EFgQU+9yq"
-"Eor6wbWSj82rEdsJPs9NvvYwHwYDVR0jBBgwFoAUeu19bca3eJ2yOAGl6EqMsKQO"
-"KowwCgYIKoZIzj0EAwIDSQAwRgIhAMYwMempizBOaH4GxTl5KsV6XAFNMBfe3NJ9"
-"1R3Nhjf/AiEAxqIsbrGuX4WRSctd53eLo/ML6T2bgG+Uvz2QpYR4Ydw="
-"-----END CERTIFICATE-----"
-"-----BEGIN CERTIFICATE-----"
-"MIIB8TCCAZegAwIBAgIQd9NtlW7IrmIF5Y46y5hagTAKBggqhkjOPQQDAjBPMSEw"
-"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
-"byBBdXRoZW50aWNhdGlvbiBSb290IENBIDAwMjAgFw0xODExMDgxOTEyMTlaGA8y"
-"MDU4MTEwODE5MTIxOVowTzEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
-"SW5jMSowKAYDVQQDDCFDcnlwdG8gQXV0aGVudGljYXRpb24gUm9vdCBDQSAwMDIw"
-"WTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAS9VOZt44dUhABrU64VgNUKoGnnit9V"
-"eNhc4tVN1bgwKWv/3W5vclb72Z7xoRaxHTOtSRA6oYWHOdz65DfhnWNOo1MwUTAd"
-"BgNVHQ4EFgQUeu19bca3eJ2yOAGl6EqMsKQOKowwHwYDVR0jBBgwFoAUeu19bca3"
-"eJ2yOAGl6EqMsKQOKowwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNIADBF"
-"AiEAodxjRZDsgZ7h3luBEmVRrdTCxPjllSgu4EvnaOx8AnMCID5rp06eTArWjCSw"
-"+y7nk9LmvpRlyhXQ6lvIf1V5mVyt"
-"-----END CERTIFICATE-----";
+char_t certChain[2500];
+//char_t certChain[] =
+//"-----BEGIN CERTIFICATE-----"
+//"MIIB9DCCAZugAwIBAgIQcK2Tvu8XByvn9asGTKZzmzAKBggqhkjOPQQDAjBPMSEw"
+//"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
+//"byBBdXRoZW50aWNhdGlvbiBTaWduZXIgRjYwMDAgFw0xOTAzMjkxODAwMDBaGA8y"
+//"MDQ3MDMyOTE4MDAwMFowRjEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
+//"SW5jMSEwHwYDVQQDDBgwMTIzNjFGRDVFQkRBQTA2MDEgQVRFQ0MwWTATBgcqhkjO"
+//"PQIBBggqhkjOPQMBBwNCAATiV6oZwekAtQZQnCx1xaGn/+Jh27gYWYswIZ6rY8IF"
+//"Iak0kAkTO70Nsq3slDmuKogg0qqhVRWPKXLvXUtZyq/Uo2AwXjAMBgNVHRMBAf8E"
+//"AjAAMA4GA1UdDwEB/wQEAwIDiDAdBgNVHQ4EFgQUfA4Vdk/biF8UnjdMhFKFv+ic"
+//"m1swHwYDVR0jBBgwFoAU+9yqEor6wbWSj82rEdsJPs9NvvYwCgYIKoZIzj0EAwID"
+//"RwAwRAIgLKMCu07Zh48KQEILHgcPPR6PE/PNiNzLAjei3nleUJ8CIAqGhGdsDmC7"
+//"qJIgF+XsQBgr67OV0+zCMVTrUyd5pCqr"
+//"-----END CERTIFICATE-----"
+//"-----BEGIN CERTIFICATE-----"
+//"MIICBTCCAaqgAwIBAgIQeQqn1X1z3OltZdtmi3ayXjAKBggqhkjOPQQDAjBPMSEw"
+//"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
+//"byBBdXRoZW50aWNhdGlvbiBSb290IENBIDAwMjAgFw0xODEyMTQxOTAwMDBaGA8y"
+//"MDQ5MTIxNDE5MDAwMFowTzEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
+//"SW5jMSowKAYDVQQDDCFDcnlwdG8gQXV0aGVudGljYXRpb24gU2lnbmVyIEY2MDAw"
+//"WTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAR2R0FwsmPnmVS8hbsS6f5wDFuN1NaT"
+//"RZjCKadoAg5OC21IddDtoe72X5FfxrEWRsWhymMfYlVodEdpxd6DtYlqo2YwZDAO"
+//"BgNVHQ8BAf8EBAMCAYYwEgYDVR0TAQH/BAgwBgEB/wIBADAdBgNVHQ4EFgQU+9yq"
+//"Eor6wbWSj82rEdsJPs9NvvYwHwYDVR0jBBgwFoAUeu19bca3eJ2yOAGl6EqMsKQO"
+//"KowwCgYIKoZIzj0EAwIDSQAwRgIhAMYwMempizBOaH4GxTl5KsV6XAFNMBfe3NJ9"
+//"1R3Nhjf/AiEAxqIsbrGuX4WRSctd53eLo/ML6T2bgG+Uvz2QpYR4Ydw="
+//"-----END CERTIFICATE-----"
+//"-----BEGIN CERTIFICATE-----"
+//"MIIB8TCCAZegAwIBAgIQd9NtlW7IrmIF5Y46y5hagTAKBggqhkjOPQQDAjBPMSEw"
+//"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
+//"byBBdXRoZW50aWNhdGlvbiBSb290IENBIDAwMjAgFw0xODExMDgxOTEyMTlaGA8y"
+//"MDU4MTEwODE5MTIxOVowTzEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
+//"SW5jMSowKAYDVQQDDCFDcnlwdG8gQXV0aGVudGljYXRpb24gUm9vdCBDQSAwMDIw"
+//"WTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAS9VOZt44dUhABrU64VgNUKoGnnit9V"
+//"eNhc4tVN1bgwKWv/3W5vclb72Z7xoRaxHTOtSRA6oYWHOdz65DfhnWNOo1MwUTAd"
+//"BgNVHQ4EFgQUeu19bca3eJ2yOAGl6EqMsKQOKowwHwYDVR0jBBgwFoAUeu19bca3"
+//"eJ2yOAGl6EqMsKQOKowwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNIADBF"
+//"AiEAodxjRZDsgZ7h3luBEmVRrdTCxPjllSgu4EvnaOx8AnMCID5rp06eTArWjCSw"
+//"+y7nk9LmvpRlyhXQ6lvIf1V5mVyt"
+//"-----END CERTIFICATE-----";
 
 //List of trusted CA certificates
 char_t trustedCaList[] =
@@ -199,7 +199,7 @@ void ioInit(void)
  * @brief Certificate Store init
  **/
 
-void certStoreInit(char_t *certChain)
+void certStoreInit(void)
 {
 	volatile ATCA_STATUS status;
 	tng_type_t t = TNGTYPE_22;
@@ -270,9 +270,9 @@ void certStoreInit(char_t *certChain)
 	//TODO
 	//memcpy(certChain, certsigner, signer_size);
 	//memcpy(certChain+signer_size, certdevice, device_size);
-	//strcpy(certChain, device_pem);
-	//strcat(certChain, signer_pem);
-	//strcat(certChain, cert_pem);
+	strcpy(certChain, device_pem);
+	strcat(certChain, signer_pem);
+	strcat(certChain, cert_pem);
 	
 	
 	
@@ -344,7 +344,7 @@ error_t mqttTestTlsInitCallback(MqttClientContext *context,
 
 	//TODO
 	//Import the client's certificate
-	error = tlsAddCertificate(tlsContext, certChain, 3, NULL, 0);
+	error = tlsAddCertificate(tlsContext, certChain, strlen(certChain), NULL, 0);
 	//Any error to report?
 	if(error){
 		printf("Err: add certchain [%d]\n", error);
@@ -703,7 +703,7 @@ int main(void)
 	print_bytes((uint8_t*)&serial_number, 9);
 	printf("\r\n");
 	
-	certStoreInit(certChain);
+	certStoreInit();
 	
 	//Configure I/Os
 	ioInit();
