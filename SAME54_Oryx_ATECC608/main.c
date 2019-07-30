@@ -60,11 +60,13 @@ if(s != ATCA_SUCCESS) {										\
 
 
 //MQTT server name
-#define APP_SERVER_NAME "iot.eclipse.org"
+//#define APP_SERVER_NAME "iot.eclipse.org"
+#define APP_SERVER_NAME "test.mosquitto.org"
 
 //MQTT server port
 //#define APP_SERVER_PORT 1883   //MQTT over TCP
-#define APP_SERVER_PORT 8883 //MQTT over TLS
+//#define APP_SERVER_PORT 8883 //MQTT over TLS
+#define APP_SERVER_PORT 8884 //MQTT over TLS Mosquitto
 //#define APP_SERVER_PORT 80   //MQTT over WebSocket
 //#define APP_SERVER_PORT 443  //MQTT over secure WebSocket
 
@@ -132,6 +134,24 @@ char_t certChain[2500];
 
 //List of trusted CA certificates
 char_t trustedCaList[] =
+"-----BEGIN CERTIFICATE-----"
+"MIIC8DCCAlmgAwIBAgIJAOD63PlXjJi8MA0GCSqGSIb3DQEBBQUAMIGQMQswCQYD"
+"VQQGEwJHQjEXMBUGA1UECAwOVW5pdGVkIEtpbmdkb20xDjAMBgNVBAcMBURlcmJ5"
+"MRIwEAYDVQQKDAlNb3NxdWl0dG8xCzAJBgNVBAsMAkNBMRYwFAYDVQQDDA1tb3Nx"
+"dWl0dG8ub3JnMR8wHQYJKoZIhvcNAQkBFhByb2dlckBhdGNob28ub3JnMB4XDTEy"
+"MDYyOTIyMTE1OVoXDTIyMDYyNzIyMTE1OVowgZAxCzAJBgNVBAYTAkdCMRcwFQYD"
+"VQQIDA5Vbml0ZWQgS2luZ2RvbTEOMAwGA1UEBwwFRGVyYnkxEjAQBgNVBAoMCU1v"
+"c3F1aXR0bzELMAkGA1UECwwCQ0ExFjAUBgNVBAMMDW1vc3F1aXR0by5vcmcxHzAd"
+"BgkqhkiG9w0BCQEWEHJvZ2VyQGF0Y2hvby5vcmcwgZ8wDQYJKoZIhvcNAQEBBQAD"
+"gY0AMIGJAoGBAMYkLmX7SqOT/jJCZoQ1NWdCrr/pq47m3xxyXcI+FLEmwbE3R9vM"
+"rE6sRbP2S89pfrCt7iuITXPKycpUcIU0mtcT1OqxGBV2lb6RaOT2gC5pxyGaFJ+h"
+"A+GIbdYKO3JprPxSBoRponZJvDGEZuM3N7p3S/lRoi7G5wG5mvUmaE5RAgMBAAGj"
+"UDBOMB0GA1UdDgQWBBTad2QneVztIPQzRRGj6ZHKqJTv5jAfBgNVHSMEGDAWgBTa"
+"d2QneVztIPQzRRGj6ZHKqJTv5jAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUA"
+"A4GBAAqw1rK4NlRUCUBLhEFUQasjP7xfFqlVbE2cRy0Rs4o3KS0JwzQVBwG85xge"
+"REyPOFdGdhBY2P1FNRy0MDr6xr+D2ZOwxs63dG1nnAnWZg7qwoLgpZ4fESPD3PkA"
+"1ZgKJc2zbSQ9fCPxt2W3mdVav66c6fsb7els2W2Iz7gERJSX"
+"-----END CERTIFICATE-----"
 "-----BEGIN CERTIFICATE-----"
 "MIIDSjCCAjKgAwIBAgIQRK+wgNajJ7qJMDmGLvhAazANBgkqhkiG9w0BAQUFADA/"
 "MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT"
@@ -445,7 +465,7 @@ error_t mqttTestConnect(void)
 
    //Attach application-specific callback functions
    mqttClientCallbacks.publishCallback = mqttTestPublishCallback;
-#if (APP_SERVER_PORT == 8883 || APP_SERVER_PORT == 443)
+#if (APP_SERVER_PORT == 8883 || APP_SERVER_PORT == 8884 || APP_SERVER_PORT == 443)
    mqttClientCallbacks.tlsInitCallback = mqttTestTlsInitCallback;
 #endif
 
@@ -458,7 +478,7 @@ error_t mqttTestConnect(void)
 #if (APP_SERVER_PORT == 1883)
    //MQTT over TCP
    mqttClientSetTransportProtocol(&mqttClientContext, MQTT_TRANSPORT_PROTOCOL_TCP);
-#elif (APP_SERVER_PORT == 8883)
+#elif (APP_SERVER_PORT == 8883 || APP_SERVER_PORT == 8884)
    //MQTT over TLS
    mqttClientSetTransportProtocol(&mqttClientContext, MQTT_TRANSPORT_PROTOCOL_TLS);
 #elif (APP_SERVER_PORT == 80)
