@@ -23,6 +23,7 @@
 #include "lib\tls\atcatls.h"
 #include "lib\tls\atcatls_cfg.h"
 
+
 /* Define section ---------------------------------------------------*/
 
 
@@ -59,11 +60,13 @@ if(s != ATCA_SUCCESS) {										\
 
 
 //MQTT server name
-#define APP_SERVER_NAME "iot.eclipse.org"
+//#define APP_SERVER_NAME "iot.eclipse.org"
+#define APP_SERVER_NAME "test.mosquitto.org"
 
 //MQTT server port
 //#define APP_SERVER_PORT 1883   //MQTT over TCP
-#define APP_SERVER_PORT 8883 //MQTT over TLS
+//#define APP_SERVER_PORT 8883 //MQTT over TLS
+#define APP_SERVER_PORT 8884 //MQTT over TLS Mosquitto
 //#define APP_SERVER_PORT 80   //MQTT over WebSocket
 //#define APP_SERVER_PORT 443  //MQTT over secure WebSocket
 
@@ -86,9 +89,69 @@ ATCAIfaceCfg cfg_ateccx08a_i2c_device = {
 volatile ATCA_STATUS status;
 tng_type_t t = TNGTYPE_22;
 uint8_t serial_number[ATCA_SERIAL_NUM_SIZE];
+//Certificate chain
+char_t certChain[2500];
+//char_t certChain[] =
+//"-----BEGIN CERTIFICATE-----"
+//"MIIB9DCCAZugAwIBAgIQcK2Tvu8XByvn9asGTKZzmzAKBggqhkjOPQQDAjBPMSEw"
+//"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
+//"byBBdXRoZW50aWNhdGlvbiBTaWduZXIgRjYwMDAgFw0xOTAzMjkxODAwMDBaGA8y"
+//"MDQ3MDMyOTE4MDAwMFowRjEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
+//"SW5jMSEwHwYDVQQDDBgwMTIzNjFGRDVFQkRBQTA2MDEgQVRFQ0MwWTATBgcqhkjO"
+//"PQIBBggqhkjOPQMBBwNCAATiV6oZwekAtQZQnCx1xaGn/+Jh27gYWYswIZ6rY8IF"
+//"Iak0kAkTO70Nsq3slDmuKogg0qqhVRWPKXLvXUtZyq/Uo2AwXjAMBgNVHRMBAf8E"
+//"AjAAMA4GA1UdDwEB/wQEAwIDiDAdBgNVHQ4EFgQUfA4Vdk/biF8UnjdMhFKFv+ic"
+//"m1swHwYDVR0jBBgwFoAU+9yqEor6wbWSj82rEdsJPs9NvvYwCgYIKoZIzj0EAwID"
+//"RwAwRAIgLKMCu07Zh48KQEILHgcPPR6PE/PNiNzLAjei3nleUJ8CIAqGhGdsDmC7"
+//"qJIgF+XsQBgr67OV0+zCMVTrUyd5pCqr"
+//"-----END CERTIFICATE-----"
+//"-----BEGIN CERTIFICATE-----"
+//"MIICBTCCAaqgAwIBAgIQeQqn1X1z3OltZdtmi3ayXjAKBggqhkjOPQQDAjBPMSEw"
+//"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
+//"byBBdXRoZW50aWNhdGlvbiBSb290IENBIDAwMjAgFw0xODEyMTQxOTAwMDBaGA8y"
+//"MDQ5MTIxNDE5MDAwMFowTzEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
+//"SW5jMSowKAYDVQQDDCFDcnlwdG8gQXV0aGVudGljYXRpb24gU2lnbmVyIEY2MDAw"
+//"WTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAR2R0FwsmPnmVS8hbsS6f5wDFuN1NaT"
+//"RZjCKadoAg5OC21IddDtoe72X5FfxrEWRsWhymMfYlVodEdpxd6DtYlqo2YwZDAO"
+//"BgNVHQ8BAf8EBAMCAYYwEgYDVR0TAQH/BAgwBgEB/wIBADAdBgNVHQ4EFgQU+9yq"
+//"Eor6wbWSj82rEdsJPs9NvvYwHwYDVR0jBBgwFoAUeu19bca3eJ2yOAGl6EqMsKQO"
+//"KowwCgYIKoZIzj0EAwIDSQAwRgIhAMYwMempizBOaH4GxTl5KsV6XAFNMBfe3NJ9"
+//"1R3Nhjf/AiEAxqIsbrGuX4WRSctd53eLo/ML6T2bgG+Uvz2QpYR4Ydw="
+//"-----END CERTIFICATE-----"
+//"-----BEGIN CERTIFICATE-----"
+//"MIIB8TCCAZegAwIBAgIQd9NtlW7IrmIF5Y46y5hagTAKBggqhkjOPQQDAjBPMSEw"
+//"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
+//"byBBdXRoZW50aWNhdGlvbiBSb290IENBIDAwMjAgFw0xODExMDgxOTEyMTlaGA8y"
+//"MDU4MTEwODE5MTIxOVowTzEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
+//"SW5jMSowKAYDVQQDDCFDcnlwdG8gQXV0aGVudGljYXRpb24gUm9vdCBDQSAwMDIw"
+//"WTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAS9VOZt44dUhABrU64VgNUKoGnnit9V"
+//"eNhc4tVN1bgwKWv/3W5vclb72Z7xoRaxHTOtSRA6oYWHOdz65DfhnWNOo1MwUTAd"
+//"BgNVHQ4EFgQUeu19bca3eJ2yOAGl6EqMsKQOKowwHwYDVR0jBBgwFoAUeu19bca3"
+//"eJ2yOAGl6EqMsKQOKowwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNIADBF"
+//"AiEAodxjRZDsgZ7h3luBEmVRrdTCxPjllSgu4EvnaOx8AnMCID5rp06eTArWjCSw"
+//"+y7nk9LmvpRlyhXQ6lvIf1V5mVyt"
+//"-----END CERTIFICATE-----";
 
 //List of trusted CA certificates
 char_t trustedCaList[] =
+"-----BEGIN CERTIFICATE-----"
+"MIIC8DCCAlmgAwIBAgIJAOD63PlXjJi8MA0GCSqGSIb3DQEBBQUAMIGQMQswCQYD"
+"VQQGEwJHQjEXMBUGA1UECAwOVW5pdGVkIEtpbmdkb20xDjAMBgNVBAcMBURlcmJ5"
+"MRIwEAYDVQQKDAlNb3NxdWl0dG8xCzAJBgNVBAsMAkNBMRYwFAYDVQQDDA1tb3Nx"
+"dWl0dG8ub3JnMR8wHQYJKoZIhvcNAQkBFhByb2dlckBhdGNob28ub3JnMB4XDTEy"
+"MDYyOTIyMTE1OVoXDTIyMDYyNzIyMTE1OVowgZAxCzAJBgNVBAYTAkdCMRcwFQYD"
+"VQQIDA5Vbml0ZWQgS2luZ2RvbTEOMAwGA1UEBwwFRGVyYnkxEjAQBgNVBAoMCU1v"
+"c3F1aXR0bzELMAkGA1UECwwCQ0ExFjAUBgNVBAMMDW1vc3F1aXR0by5vcmcxHzAd"
+"BgkqhkiG9w0BCQEWEHJvZ2VyQGF0Y2hvby5vcmcwgZ8wDQYJKoZIhvcNAQEBBQAD"
+"gY0AMIGJAoGBAMYkLmX7SqOT/jJCZoQ1NWdCrr/pq47m3xxyXcI+FLEmwbE3R9vM"
+"rE6sRbP2S89pfrCt7iuITXPKycpUcIU0mtcT1OqxGBV2lb6RaOT2gC5pxyGaFJ+h"
+"A+GIbdYKO3JprPxSBoRponZJvDGEZuM3N7p3S/lRoi7G5wG5mvUmaE5RAgMBAAGj"
+"UDBOMB0GA1UdDgQWBBTad2QneVztIPQzRRGj6ZHKqJTv5jAfBgNVHSMEGDAWgBTa"
+"d2QneVztIPQzRRGj6ZHKqJTv5jAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBQUA"
+"A4GBAAqw1rK4NlRUCUBLhEFUQasjP7xfFqlVbE2cRy0Rs4o3KS0JwzQVBwG85xge"
+"REyPOFdGdhBY2P1FNRy0MDr6xr+D2ZOwxs63dG1nnAnWZg7qwoLgpZ4fESPD3PkA"
+"1ZgKJc2zbSQ9fCPxt2W3mdVav66c6fsb7els2W2Iz7gERJSX"
+"-----END CERTIFICATE-----"
 "-----BEGIN CERTIFICATE-----"
 "MIIDSjCCAjKgAwIBAgIQRK+wgNajJ7qJMDmGLvhAazANBgkqhkiG9w0BAQUFADA/"
 "MSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT"
@@ -125,7 +188,7 @@ uint8_t seed[32];
 
 
 /* Local function prototype section ----------------------------------*/
-void print_bytes(uint8_t * ptr, uint8_t length);
+void print_bytes(uint8_t * ptr, uint16_t length);
 error_t ecc508aEcdhCallback(TlsContext *context);
 
 error_t ecc508aEcdsaSignCallback(TlsContext *context,
@@ -152,7 +215,89 @@ void ioInit(void)
    PORT->Group[SW0_GROUP].PINCFG[SW0_PIN].bit.INEN = 1;
 }
 
+/**
+ * @brief Certificate Store init
+ **/
 
+void certStoreInit(void)
+{
+	volatile ATCA_STATUS status;
+	tng_type_t t = TNGTYPE_22;
+	
+	uint8_t devicePubkey[64], signerPubkey[64], rootPubkey[64];
+	uint8_t cert[800], certsigner[800], certdevice[768];
+	memset(cert, 0x00, sizeof(cert) );
+	
+	printf("CryptoAuthLib Basics Trust'N'GO MAH22 Certificate Auth\n\r");
+	printf("--------Root Certificate Section---------\n");
+	size_t cert_size;
+	status = tng_atcacert_root_cert_size(&cert_size); CHECK_STATUS(status);
+	status = tng_atcacert_root_cert(cert, &cert_size); CHECK_STATUS(status);
+	status = tng_atcacert_root_public_key(rootPubkey); CHECK_STATUS(status);
+	//printf("Cert [%d]\n", cert_size);
+	//print_bytes(cert, cert_size);
+	char cert_pem[1024]; size_t cert_size_pem = sizeof(cert_pem);
+	status = atcacert_encode_pem_cert(cert, cert_size, cert_pem, &cert_size_pem); CHECK_STATUS(status)
+	//printf("Cert PEM [%d]\n%s\n", strlen(cert_pem), cert_pem);
+	
+	//char rootPubkey_pem[176]; size_t rootPubkey_size_pem = sizeof(rootPubkey_pem);
+	//status = atcacert_encode_pem_pubkey(rootPubkey, sizeof(rootPubkey), rootPubkey_pem, &rootPubkey_size_pem);
+	//printf("Public key [%d]\n%s\n", strlen(rootPubkey_pem), rootPubkey_pem);
+	//printf("Public key [%d]\n", sizeof(rootPubkey));
+	//print_bytes(rootPubkey, sizeof(rootPubkey));
+	
+	//printf("TBS Digest\n");
+	bool is_verified;
+	
+	uint8_t dig[32];
+	uint8_t rootSignature[64];uint16_t dig_size;
+	uint8_t offset = 432+2; //location of R
+	memcpy(rootSignature, cert+offset, 32);//size of R
+	offset = 467+2; //location of S
+	memcpy(rootSignature+32, cert+offset, 32);//size of S
+	status = atcab_sha(411, cert+4, NULL); CHECK_STATUS(status);
+	status = atcab_verify_extern(dig, rootSignature, rootPubkey, &is_verified);
+	//status = atcab_verify(VERIFY_MODE_EXTERNAL | VERIFY_MODE_SOURCE_TEMPKEY, NULL, rootSignature,rootPubkey, NULL, NULL);
+	printf("--------Root validated: %s--------\n\n", (is_verified == TRUE)? "OK" : "FAILED");
+	
+	printf("--------Signer Certificate Section---------\n");
+	size_t signer_size;
+	status = tng_atcacert_max_signer_cert_size(&signer_size); CHECK_STATUS(status);
+	status = tng_atcacert_read_signer_cert(certsigner, &signer_size); CHECK_STATUS(status);
+	status = tng_atcacert_signer_public_key(signerPubkey, certsigner); CHECK_STATUS(status);
+	char signer_pem[1024]; size_t signer_size_pem = sizeof(signer_pem);
+	status = atcacert_encode_pem_cert(certsigner, signer_size, signer_pem, &signer_size_pem); CHECK_STATUS(status)
+	//printf("Cert PEM [%d]\n%s\n", strlen(signer_pem), signer_pem);
+	
+	//printf("Public key [%d]\n", sizeof(signerPubkey));
+	//print_bytes(signerPubkey, sizeof(signerPubkey));
+	status = atcacert_verify_cert_hw(&g_tngtn_cert_def_1_signer, certsigner, signer_size, rootPubkey); CHECK_STATUS(status);
+	printf("--------Signer validated: %s--------\n\n", (status == ATCA_SUCCESS)? "OK" : "FAILED");
+	
+	printf("--------Device Certificate Section---------\n");
+	size_t device_size;
+	status = tng_atcacert_max_device_cert_size(&device_size); CHECK_STATUS(status);
+	status = tng_atcacert_read_device_cert(certdevice, &device_size, certsigner); CHECK_STATUS(status);
+	status = tng_atcacert_device_public_key(devicePubkey, certdevice); CHECK_STATUS(status);
+	char device_pem[1024]; size_t device_size_pem = sizeof(device_pem);
+	status = atcacert_encode_pem_cert(certdevice, device_size, device_pem, &device_size_pem); CHECK_STATUS(status)
+	//printf("Cert PEM [%d]\n%s\n", strlen(device_pem), device_pem);
+	//printf("Public key [%d]\n", sizeof(devicePubkey));
+	//print_bytes(devicePubkey, sizeof(devicePubkey));
+	status = atcacert_verify_cert_hw(&g_tngtn_cert_def_2_device, certdevice, device_size, signerPubkey); CHECK_STATUS(status);
+	printf("--------Device validated: %s--------\n\n", (status == ATCA_SUCCESS)? "OK" : "FAILED");   
+	
+	//TODO
+	//memcpy(certChain, certsigner, signer_size);
+	//memcpy(certChain+signer_size, certdevice, device_size);
+	strcpy(certChain, device_pem);
+	strcat(certChain, signer_pem);
+	strcat(certChain, cert_pem);
+	
+	
+	
+	printf("Cert Chain PEM [%d]\n%s\n", strlen(certChain), certChain);
+}
 /**
  * @brief Random data generation callback function
  * @param[out] data Buffer where to store the random data
@@ -218,12 +363,13 @@ error_t mqttTestTlsInitCallback(MqttClientContext *context,
 		return error;
 
 	//TODO
-	
 	//Import the client's certificate
-	//error = tlsAddCertificate(tlsContext, xxxxxxxxxxxxxx, xxxxxxxxxxxxxx, NULL, 0);
+	error = tlsAddCertificate(tlsContext, certChain, strlen(certChain), NULL, 0);
 	//Any error to report?
-	if(error)
+	if(error){
+		printf("Err: add certchain [%d]\n", error);
 		return error;
+	}
 #else
 	//Set the fully qualified domain name of the server
 	error = tlsSetServerName(tlsContext, APP_SERVER_NAME);
@@ -319,7 +465,7 @@ error_t mqttTestConnect(void)
 
    //Attach application-specific callback functions
    mqttClientCallbacks.publishCallback = mqttTestPublishCallback;
-#if (APP_SERVER_PORT == 8883 || APP_SERVER_PORT == 443)
+#if (APP_SERVER_PORT == 8883 || APP_SERVER_PORT == 8884 || APP_SERVER_PORT == 443)
    mqttClientCallbacks.tlsInitCallback = mqttTestTlsInitCallback;
 #endif
 
@@ -332,7 +478,7 @@ error_t mqttTestConnect(void)
 #if (APP_SERVER_PORT == 1883)
    //MQTT over TCP
    mqttClientSetTransportProtocol(&mqttClientContext, MQTT_TRANSPORT_PROTOCOL_TCP);
-#elif (APP_SERVER_PORT == 8883)
+#elif (APP_SERVER_PORT == 8883 || APP_SERVER_PORT == 8884)
    //MQTT over TLS
    mqttClientSetTransportProtocol(&mqttClientContext, MQTT_TRANSPORT_PROTOCOL_TLS);
 #elif (APP_SERVER_PORT == 80)
@@ -577,12 +723,14 @@ int main(void)
 	print_bytes((uint8_t*)&serial_number, 9);
 	printf("\r\n");
 	
+	certStoreInit();
+	
 	//Configure I/Os
 	ioInit();
-
+	
 	//Initialize hardware cryptography accelerator
 	same54CryptoInit();
-
+	
 
 	//Enable TRNG peripheral clock
 	MCLK->APBCMASK.reg |= MCLK_APBCMASK_TRNG;
@@ -701,8 +849,8 @@ int main(void)
 #endif
 #endif
 
-//#if (MDNS_CLIENT_SUPPORT == ENABLED)
-//#if (MDNS_RESPONDER_SUPPORT ENABLED == ENABLED)
+#if (MDNS_CLIENT_SUPPORT == ENABLED)
+#if (MDNS_RESPONDER_SUPPORT == ENABLED)
 
 	//Get default settings
 	mdnsResponderGetDefaultSettings(&mdnsResponderSettings);
@@ -735,8 +883,8 @@ int main(void)
 		//Debug message
 		TRACE_ERROR("Failed to start mDNS responder!\r\n");
 	}
-//#endif
-//#endif
+#endif
+#endif
 
 #if (IPV6_SUPPORT == ENABLED)
 #if (APP_USE_SLAAC == ENABLED)
@@ -817,10 +965,10 @@ int main(void)
 	return 0;
 }
 
-void print_bytes(uint8_t * ptr, uint8_t length)
+void print_bytes(uint8_t * ptr, uint16_t length)
 {
 	
-	uint8_t i = 0;
+	uint16_t i = 0;
 	uint8_t line_count = 0;
 	for(;i < length; i++) {
 		printf("0x%02x, ",ptr[i]);

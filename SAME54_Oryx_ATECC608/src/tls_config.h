@@ -31,6 +31,8 @@
 #ifndef _TLS_CONFIG_H
 #define _TLS_CONFIG_H
 
+#define TLS_ECC_CALLBACK_SUPPORT ENABLED
+
 //Desired trace level (for debugging purposes)
 #define TLS_TRACE_LEVEL TRACE_LEVEL_DEBUG
 
