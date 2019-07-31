@@ -53,13 +53,13 @@
 //SHA-1 hash support
 #define SHA1_SUPPORT ENABLED
 //SHA-224 hash support
-#define SHA224_SUPPORT ENABLED
+#define SHA224_SUPPORT DISABLED
 //SHA-256 hash support
 #define SHA256_SUPPORT ENABLED
 //SHA-384 hash support
 #define SHA384_SUPPORT ENABLED
 //SHA-512 hash support
-#define SHA512_SUPPORT ENABLED
+#define SHA512_SUPPORT DISABLED
 //SHA-512/224 hash support
 #define SHA512_224_SUPPORT DISABLED
 //SHA-512/256 hash support
@@ -160,7 +160,7 @@
 //Diffie-Hellman support
 #define DH_SUPPORT ENABLED
 //RSA support
-#define RSA_SUPPORT ENABLED
+#define RSA_SUPPORT DISABLED
 //DSA support
 #define DSA_SUPPORT ENABLED
 
@@ -192,15 +192,15 @@
 //secp224k1 elliptic curve support
 #define SECP224K1_SUPPORT DISABLED
 //secp224r1 elliptic curve support (NIST P-224)
-#define SECP224R1_SUPPORT ENABLED
+#define SECP224R1_SUPPORT DISABLED
 //secp256k1 elliptic curve support
 #define SECP256K1_SUPPORT DISABLED
 //secp256r1 elliptic curve support (NIST P-256)
 #define SECP256R1_SUPPORT ENABLED
 //secp384r1 elliptic curve support (NIST P-384)
-#define SECP384R1_SUPPORT ENABLED
+#define SECP384R1_SUPPORT DISABLED
 //secp521r1 elliptic curve support (NIST P-521)
-#define SECP521R1_SUPPORT ENABLED
+#define SECP521R1_SUPPORT DISABLED
 //brainpoolP160r1 elliptic curve support
 #define BRAINPOOLP160R1_SUPPORT DISABLED
 //brainpoolP192r1 elliptic curve support
@@ -216,7 +216,7 @@
 //brainpoolP512r1 elliptic curve support
 #define BRAINPOOLP512R1_SUPPORT DISABLED
 //Curve25519 elliptic curve support
-#define X25519_SUPPORT ENABLED
+#define X25519_SUPPORT DISABLED
 //Curve448 elliptic curve support
 #define X448_SUPPORT DISABLED
 //Ed25519 elliptic curve support
