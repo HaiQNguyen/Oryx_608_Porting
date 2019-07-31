@@ -90,48 +90,8 @@ ATCAIfaceCfg cfg_ateccx08a_i2c_device = {
 volatile ATCA_STATUS status;
 tng_type_t t = TNGTYPE_22;
 uint8_t serial_number[ATCA_SERIAL_NUM_SIZE];
-//Certificate chain
 char_t certChain[2500];
-//char_t certChain[] =
-//"-----BEGIN CERTIFICATE-----"
-//"MIIB9DCCAZugAwIBAgIQcK2Tvu8XByvn9asGTKZzmzAKBggqhkjOPQQDAjBPMSEw"
-//"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
-//"byBBdXRoZW50aWNhdGlvbiBTaWduZXIgRjYwMDAgFw0xOTAzMjkxODAwMDBaGA8y"
-//"MDQ3MDMyOTE4MDAwMFowRjEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
-//"SW5jMSEwHwYDVQQDDBgwMTIzNjFGRDVFQkRBQTA2MDEgQVRFQ0MwWTATBgcqhkjO"
-//"PQIBBggqhkjOPQMBBwNCAATiV6oZwekAtQZQnCx1xaGn/+Jh27gYWYswIZ6rY8IF"
-//"Iak0kAkTO70Nsq3slDmuKogg0qqhVRWPKXLvXUtZyq/Uo2AwXjAMBgNVHRMBAf8E"
-//"AjAAMA4GA1UdDwEB/wQEAwIDiDAdBgNVHQ4EFgQUfA4Vdk/biF8UnjdMhFKFv+ic"
-//"m1swHwYDVR0jBBgwFoAU+9yqEor6wbWSj82rEdsJPs9NvvYwCgYIKoZIzj0EAwID"
-//"RwAwRAIgLKMCu07Zh48KQEILHgcPPR6PE/PNiNzLAjei3nleUJ8CIAqGhGdsDmC7"
-//"qJIgF+XsQBgr67OV0+zCMVTrUyd5pCqr"
-//"-----END CERTIFICATE-----"
-//"-----BEGIN CERTIFICATE-----"
-//"MIICBTCCAaqgAwIBAgIQeQqn1X1z3OltZdtmi3ayXjAKBggqhkjOPQQDAjBPMSEw"
-//"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
-//"byBBdXRoZW50aWNhdGlvbiBSb290IENBIDAwMjAgFw0xODEyMTQxOTAwMDBaGA8y"
-//"MDQ5MTIxNDE5MDAwMFowTzEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
-//"SW5jMSowKAYDVQQDDCFDcnlwdG8gQXV0aGVudGljYXRpb24gU2lnbmVyIEY2MDAw"
-//"WTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAR2R0FwsmPnmVS8hbsS6f5wDFuN1NaT"
-//"RZjCKadoAg5OC21IddDtoe72X5FfxrEWRsWhymMfYlVodEdpxd6DtYlqo2YwZDAO"
-//"BgNVHQ8BAf8EBAMCAYYwEgYDVR0TAQH/BAgwBgEB/wIBADAdBgNVHQ4EFgQU+9yq"
-//"Eor6wbWSj82rEdsJPs9NvvYwHwYDVR0jBBgwFoAUeu19bca3eJ2yOAGl6EqMsKQO"
-//"KowwCgYIKoZIzj0EAwIDSQAwRgIhAMYwMempizBOaH4GxTl5KsV6XAFNMBfe3NJ9"
-//"1R3Nhjf/AiEAxqIsbrGuX4WRSctd53eLo/ML6T2bgG+Uvz2QpYR4Ydw="
-//"-----END CERTIFICATE-----"
-//"-----BEGIN CERTIFICATE-----"
-//"MIIB8TCCAZegAwIBAgIQd9NtlW7IrmIF5Y46y5hagTAKBggqhkjOPQQDAjBPMSEw"
-//"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
-//"byBBdXRoZW50aWNhdGlvbiBSb290IENBIDAwMjAgFw0xODExMDgxOTEyMTlaGA8y"
-//"MDU4MTEwODE5MTIxOVowTzEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
-//"SW5jMSowKAYDVQQDDCFDcnlwdG8gQXV0aGVudGljYXRpb24gUm9vdCBDQSAwMDIw"
-//"WTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAS9VOZt44dUhABrU64VgNUKoGnnit9V"
-//"eNhc4tVN1bgwKWv/3W5vclb72Z7xoRaxHTOtSRA6oYWHOdz65DfhnWNOo1MwUTAd"
-//"BgNVHQ4EFgQUeu19bca3eJ2yOAGl6EqMsKQOKowwHwYDVR0jBBgwFoAUeu19bca3"
-//"eJ2yOAGl6EqMsKQOKowwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNIADBF"
-//"AiEAodxjRZDsgZ7h3luBEmVRrdTCxPjllSgu4EvnaOx8AnMCID5rp06eTArWjCSw"
-//"+y7nk9LmvpRlyhXQ6lvIf1V5mVyt"
-//"-----END CERTIFICATE-----";
+
 
 //List of trusted CA certificates
 char_t trustedCaList[] =
@@ -185,17 +145,14 @@ uint8_t seed[32];
 /* Local function prototype section ----------------------------------*/
 void print_bytes(uint8_t * ptr, uint16_t length);
 error_t ecc508aEcdhCallback(TlsContext *context);
-
-error_t ecc508aEcdsaSignCallback(TlsContext *context,
-									const uint8_t *digest, size_t digestLength, EcdsaSignature *signature);
-
-error_t ecc508aEcdsaVerifyCallback(TlsContext *context,
-									const uint8_t *digest, size_t digestLength, EcdsaSignature *signature);
+error_t ecc508aEcdsaSignCallback(TlsContext *context, const uint8_t *digest, 
+									size_t digestLength, EcdsaSignature *signature);
+error_t ecc508aEcdsaVerifyCallback(TlsContext *context, const uint8_t *digest, 
+									size_t digestLength, EcdsaSignature *signature);
 
 /**
  * @brief I/O initialization
  **/
-
 void ioInit(void)
 {
    //Enable PORT bus clock (CLK_PORT_APB)
@@ -213,27 +170,60 @@ void ioInit(void)
 /**
  * @brief Certificate Store init
  **/
-
 void certStoreInit(void)
 {
 	volatile ATCA_STATUS status;
 	tng_type_t t = TNGTYPE_22;
 	
-	uint8_t devicePubkey[64], signerPubkey[64], rootPubkey[64];
-	uint8_t cert[800], certsigner[800], certdevice[768];
+	uint8_t devicePubkey[64];
+	uint8_t signerPubkey[64]; 
+	uint8_t rootPubkey[64];
+	uint8_t cert[800]; 
+	uint8_t certsigner[800];
+	uint8_t	certdevice[768];
+	char cert_pem[1024]; 
+	size_t cert_size_pem = sizeof(cert_pem);
+	
 	memset(cert, 0x00, sizeof(cert) );
+	
+	bool is_verified;
+	
+	uint8_t dig[32];
+	uint8_t rootSignature[64];
+	uint16_t dig_size;
+	uint8_t offset = 432+2; //location of R
+	
+	char device_pem[1024]; 
+	size_t device_size_pem = sizeof(device_pem);
+	
+	status = atcab_read_serial_number((uint8_t*)&serial_number);
+	CHECK_STATUS(status);
+	
+	printf("Serial Number of host\r\n");
+	print_bytes((uint8_t*)&serial_number, 9);
+	printf("\r\n");
 	
 	printf("CryptoAuthLib Basics Trust'N'GO MAH22 Certificate Auth\n\r");
 	printf("--------Root Certificate Section---------\n");
 	size_t cert_size;
-	status = tng_atcacert_root_cert_size(&cert_size); CHECK_STATUS(status);
-	status = tng_atcacert_root_cert(cert, &cert_size); CHECK_STATUS(status);
-	status = tng_atcacert_root_public_key(rootPubkey); CHECK_STATUS(status);
-	//printf("Cert [%d]\n", cert_size);
-	//print_bytes(cert, cert_size);
-	char cert_pem[1024]; size_t cert_size_pem = sizeof(cert_pem);
-	status = atcacert_encode_pem_cert(cert, cert_size, cert_pem, &cert_size_pem); CHECK_STATUS(status)
-	//printf("Cert PEM [%d]\n%s\n", strlen(cert_pem), cert_pem);
+	
+	status = tng_atcacert_root_cert_size(&cert_size); 
+	CHECK_STATUS(status);
+	
+	status = tng_atcacert_root_cert(cert, &cert_size); 
+	CHECK_STATUS(status);
+	
+	status = tng_atcacert_root_public_key(rootPubkey); 
+	CHECK_STATUS(status);
+	
+	printf("Root cert [%d]\n", cert_size);
+	print_bytes(cert, cert_size);
+	
+	
+	status = atcacert_encode_pem_cert(cert, cert_size, cert_pem, &cert_size_pem); 
+	CHECK_STATUS(status)
+	
+	printf("Root cert PEM [%d]\n%s\n", strlen(cert_pem), cert_pem);
 	
 	//char rootPubkey_pem[176]; size_t rootPubkey_size_pem = sizeof(rootPubkey_pem);
 	//status = atcacert_encode_pem_pubkey(rootPubkey, sizeof(rootPubkey), rootPubkey_pem, &rootPubkey_size_pem);
@@ -242,27 +232,30 @@ void certStoreInit(void)
 	//print_bytes(rootPubkey, sizeof(rootPubkey));
 	
 	//printf("TBS Digest\n");
-	bool is_verified;
 	
-	uint8_t dig[32];
-	uint8_t rootSignature[64];uint16_t dig_size;
-	uint8_t offset = 432+2; //location of R
 	memcpy(rootSignature, cert+offset, 32);//size of R
 	offset = 467+2; //location of S
 	memcpy(rootSignature+32, cert+offset, 32);//size of S
-	status = atcab_sha(411, cert+4, NULL); CHECK_STATUS(status);
+	status = atcab_sha(411, cert+4, NULL); 
+	CHECK_STATUS(status);
 	status = atcab_verify_extern(dig, rootSignature, rootPubkey, &is_verified);
 	//status = atcab_verify(VERIFY_MODE_EXTERNAL | VERIFY_MODE_SOURCE_TEMPKEY, NULL, rootSignature,rootPubkey, NULL, NULL);
 	printf("--------Root validated: %s--------\n\n", (is_verified == TRUE)? "OK" : "FAILED");
 	
 	printf("--------Signer Certificate Section---------\n");
 	size_t signer_size;
-	status = tng_atcacert_max_signer_cert_size(&signer_size); CHECK_STATUS(status);
-	status = tng_atcacert_read_signer_cert(certsigner, &signer_size); CHECK_STATUS(status);
-	status = tng_atcacert_signer_public_key(signerPubkey, certsigner); CHECK_STATUS(status);
+	status = tng_atcacert_max_signer_cert_size(&signer_size); 
+	CHECK_STATUS(status);
+	
+	status = tng_atcacert_read_signer_cert(certsigner, &signer_size); 
+	CHECK_STATUS(status);
+	
+	status = tng_atcacert_signer_public_key(signerPubkey, certsigner); 
+	CHECK_STATUS(status);
+	
 	char signer_pem[1024]; size_t signer_size_pem = sizeof(signer_pem);
 	status = atcacert_encode_pem_cert(certsigner, signer_size, signer_pem, &signer_size_pem); CHECK_STATUS(status)
-	//printf("Cert PEM [%d]\n%s\n", strlen(signer_pem), signer_pem);
+	printf("Cert PEM [%d]\n%s\n", strlen(signer_pem), signer_pem);
 	
 	//printf("Public key [%d]\n", sizeof(signerPubkey));
 	//print_bytes(signerPubkey, sizeof(signerPubkey));
@@ -271,15 +264,19 @@ void certStoreInit(void)
 	
 	printf("--------Device Certificate Section---------\n");
 	size_t device_size;
-	status = tng_atcacert_max_device_cert_size(&device_size); CHECK_STATUS(status);
-	status = tng_atcacert_read_device_cert(certdevice, &device_size, certsigner); CHECK_STATUS(status);
-	status = tng_atcacert_device_public_key(devicePubkey, certdevice); CHECK_STATUS(status);
-	char device_pem[1024]; size_t device_size_pem = sizeof(device_pem);
-	status = atcacert_encode_pem_cert(certdevice, device_size, device_pem, &device_size_pem); CHECK_STATUS(status)
+	status = tng_atcacert_max_device_cert_size(&device_size); 
+	CHECK_STATUS(status);
+	status = tng_atcacert_read_device_cert(certdevice, &device_size, certsigner); 
+	CHECK_STATUS(status);
+	status = tng_atcacert_device_public_key(devicePubkey, certdevice); 
+	CHECK_STATUS(status);
+	status = atcacert_encode_pem_cert(certdevice, device_size, device_pem, &device_size_pem);
+	 CHECK_STATUS(status)
 	//printf("Cert PEM [%d]\n%s\n", strlen(device_pem), device_pem);
 	//printf("Public key [%d]\n", sizeof(devicePubkey));
 	//print_bytes(devicePubkey, sizeof(devicePubkey));
-	status = atcacert_verify_cert_hw(&g_tngtn_cert_def_2_device, certdevice, device_size, signerPubkey); CHECK_STATUS(status);
+	status = atcacert_verify_cert_hw(&g_tngtn_cert_def_2_device, certdevice, device_size, signerPubkey); 
+	CHECK_STATUS(status);
 	printf("--------Device validated: %s--------\n\n", (status == ATCA_SUCCESS)? "OK" : "FAILED");   
 	
 	//TODO
@@ -288,9 +285,7 @@ void certStoreInit(void)
 	strcpy(certChain, device_pem);
 	strcat(certChain, signer_pem);
 	strcat(certChain, cert_pem);
-	
-	
-	
+
 	printf("Cert Chain PEM [%d]\n%s\n", strlen(certChain), certChain);
 }
 /**
@@ -362,7 +357,7 @@ error_t mqttTestTlsInitCallback(MqttClientContext *context,
 	error = tlsAddCertificate(tlsContext, certChain, strlen(certChain), NULL, 0);
 	//Any error to report?
 	if(error){
-		printf("Err: add certchain [%d]\n", error);
+		TRACE_INFO("Err: add certchain [%d]\n", error);
 		return error;
 	}
 #else
@@ -709,16 +704,8 @@ int main(void)
 		printf("unknown\r\n");
 		break;
 	}
-	
-	printf("Device init complete\n\r");
-	
-	status = atcab_read_serial_number((uint8_t*)&serial_number);
-	CHECK_STATUS(status);
-	
-	printf("Serial Number of host\r\n");
-	print_bytes((uint8_t*)&serial_number, 9);
-	printf("\r\n");
-	
+	printf("ATECC608 init complete\n\r");
+
 	certStoreInit();
 	
 	//Configure I/Os
