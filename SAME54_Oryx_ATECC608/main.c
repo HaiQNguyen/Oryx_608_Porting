@@ -62,7 +62,7 @@ if(s != ATCA_SUCCESS) {										\
 //MQTT server name
 //#define APP_SERVER_NAME "iot.eclipse.org"
 //#define APP_SERVER_NAME "test.mosquitto.org"
-#define APP_SERVER_NAME "a17ku50coq7dzl-ats.iot.eu-central-1.amazonaws.com"
+#define APP_SERVER_NAME "a3h7mvn22mrdzs-ats.iot.eu-central-1.amazonaws.com"
 
 //MQTT server port
 //#define APP_SERVER_PORT 1883   //MQTT over TCP
@@ -72,7 +72,7 @@ if(s != ATCA_SUCCESS) {										\
 //#define APP_SERVER_PORT 443  //MQTT over secure WebSocket
 
 //URI (for MQTT over WebSocket only)
-#define APP_SERVER_URI "a17ku50coq7dzl-ats.iot.eu-central-1.amazonaws.com"
+#define APP_SERVER_URI "a3h7mvn22mrdzs-ats.iot.eu-central-1.amazonaws.com"
 
 
 /* Local variable section --------------------------------------------*/
@@ -108,25 +108,85 @@ char_t trustedCaList[] =
 "YyRIHN8wfdVoOw=="
 "-----END CERTIFICATE-----"
 "-----BEGIN CERTIFICATE-----"
-"MIIDWTCCAkGgAwIBAgIURerfVjTlvzXETh50AR3QQOcLgUQwDQYJKoZIhvcNAQEL"
-"BQAwTTFLMEkGA1UECwxCQW1hem9uIFdlYiBTZXJ2aWNlcyBPPUFtYXpvbi5jb20g"
-"SW5jLiBMPVNlYXR0bGUgU1Q9V2FzaGluZ3RvbiBDPVVTMB4XDTE5MDczMTEwMjI0"
-"N1oXDTQ5MTIzMTIzNTk1OVowHjEcMBoGA1UEAwwTQVdTIElvVCBDZXJ0aWZpY2F0"
-"ZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAPKOCHdKd1xmybp3ol5L"
-"5AGp5HEe56ZXi32fnLMG3aCTZpLzTcCh5/g9v1O3LJVxABiVr1qZiMqrnnFQBK81"
-"3dFIF3Y4yiY/cjyG/h++F30rWCGAS5zwhiFUrVIdccL36LaqD6qPcH2Ew91W0lVm"
-"g9xSLfgPPFQPcPTIxzozAf9cU4B2710N++1xa9XiqXicP0u3nAaJ3FuikVJTKgs/"
-"IthGo9ke4Fm2sXzrRV1+MH8olI+7QYFZWAibJf4ANKxhEUADHQNUY1zRjTpF3gZZ"
-"3gpL+Jg67IaHgFQvrU7GKjoNDG3xRKcNAC03jbhJx3cfypI1BGmD7iRCtPVRRrFf"
-"NpkCAwEAAaNgMF4wHwYDVR0jBBgwFoAULuKaVts5pDiqD6G1zkPIw9CtVGUwHQYD"
-"VR0OBBYEFHzuELHXCG5ZgPUSdd/bcmZPpiEGMAwGA1UdEwEB/wQCMAAwDgYDVR0P"
-"AQH/BAQDAgeAMA0GCSqGSIb3DQEBCwUAA4IBAQAnHPbO/eOhEejYMFDPtbYdhYFP"
-"c49rAaMMEyfM6RmlqKCDdEJGJL2wrJAYEyVr5v7ysfdjtmsXkDNwUgx2Hxx+p9m4"
-"4wNlaU8BWheqx64ybeFWn4fijKYbboRobmASjS/vrAeaAn9IcKv2T8xv2Gd85vBn"
-"bf7mVQ2PmYh1HpVPjoLcJFxr/8rbLorvM0eKYpzAiqyCgqtuFksDs6zy5Aqw9CBM"
-"yZ37XFbca8+uawhBv29ayryTN3cdUkskvD8AqAT/85jDjD2Py4tjufJJnkL4Smml"
-"ipgzX6XTXOebh1KV30azuGptNkNUAinPSyNznECPW5fWzLQXpsW/FHPQHZGD"
+"MIIB8TCCAZegAwIBAgIQd9NtlW7IrmIF5Y46y5hagTAKBggqhkjOPQQDAjBPMSEw"
+"HwYDVQQKDBhNaWNyb2NoaXAgVGVjaG5vbG9neSBJbmMxKjAoBgNVBAMMIUNyeXB0"
+"byBBdXRoZW50aWNhdGlvbiBSb290IENBIDAwMjAgFw0xODExMDgxOTEyMTlaGA8y"
+"MDU4MTEwODE5MTIxOVowTzEhMB8GA1UECgwYTWljcm9jaGlwIFRlY2hub2xvZ3kg"
+"SW5jMSowKAYDVQQDDCFDcnlwdG8gQXV0aGVudGljYXRpb24gUm9vdCBDQSAwMDIw"
+"WTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAS9VOZt44dUhABrU64VgNUKoGnnit9V"
+"eNhc4tVN1bgwKWv/3W5vclb72Z7xoRaxHTOtSRA6oYWHOdz65DfhnWNOo1MwUTAd"
+"BgNVHQ4EFgQUeu19bca3eJ2yOAGl6EqMsKQOKowwHwYDVR0jBBgwFoAUeu19bca3"
+"eJ2yOAGl6EqMsKQOKowwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNIADBF"
+"AiEAodxjRZDsgZ7h3luBEmVRrdTCxPjllSgu4EvnaOx8AnMCID5rp06eTArWjCSw"
+"+y7nk9LmvpRlyhXQ6lvIf1V5mVyt"
 "-----END CERTIFICATE-----";
+
+#if 1
+char_t aws_pri_key[] = 
+"-----BEGIN RSA PRIVATE KEY-----"
+"MIIEogIBAAKCAQEA1j/l5rSZfWuF1zh3srCjdm6cTS1ZorcoIIXph57bVjUN7uRZ"
+"X6m+3LeUeQ10r3FUENamXty6OK6vspny2xElumINopLclQ69AnAsTSgVZJxASffi"
+"ITMxX6l1kpmmmIeYudmg7jyBqRdkQRToggjdd+LsoK6H6fSzacxfY9asEZkeMBn5"
+"vTDFtnYKfOSPvNAuAq/UjZRfc2hEX3FNtzvH4i5YWjTXs5ePZ7eh1QrTllwcLc9V"
+"aXdfAWB9x5Vyh5qnoSDLT7G4C1R2JpXCPdCiYnrFheXMx5lEFD5ufiRtcNB7WXsn"
+"DHa+yT98k+qTndz/YJjp0uT2dFA/LrafDVglMwIDAQABAoIBAGTJnm9PWj1kDYxX"
+"ZgfLjLo0ApdT1Cz1mIzkMh24n1oIj0toZJraEY1nVxMzP0chOvjI4W8Syw/LLaAJ"
+"R/PCN0tcwSlPiTEdw9CX0F9jkdzInH2vfNM9b+aeo06ZtYNflnsnY8tu71gKRwFO"
+"wqoZXYX+XG6ibBGlKZmFqQIghMWpszaWWarAX6YtsJqR3upOIvudqPKUhJoNlXSJ"
+"1vQspZ1tlAgJhCua+hmzcJmVRNhUK4Cd95RS2RVbqtpbnX8mHpgmmaqESP3P/Ixo"
+"KJ1Q1r/SqLHGY4YcAku/yGwESPTRbiws0PE+hMNppD3uKxQx5nF5VBtkbdOLZNm/"
+"CvaLI4ECgYEA/fCO/vkFhJZYxMJVRpkUhxZVU2N4i15FabDIzvOjRaHE4xgyN4iT"
+"mGo/KQIrBoC6yNaVgCARJM+BH4w48J9nZ/8wWs8Yh/+yzR00FtCNhoSpfNgioZTi"
+"3lvaCB5fv2633ni5XqQXQ0gk1X7eVYUV4jh5zDLa1cOoUibJydf7aSECgYEA1/zm"
+"3XZH5gOFsSRX+K0dm3Mh2ksYVMRbcGUpGwVlk4XA8wLB1tiiXeH5DxxDNVCLSgi+"
+"o6l36z4SlTwWk2NYhGrX3MFiLA8T4bJ4XPqPjR9BOo8c8/3bC8tXIRtsfMZ5G+ji"
+"42kXcLoQPilWomr5rXH+BWOmvXZWg52XET81n9MCgYBJnc5mnlx6JnfPeqLsF366"
+"9r9/sCuHA6pNzIE6dakUi6QfTalpLf/TxKFQyx8cAH+lr4ehoCo4KKu/MJBlOWDp"
+"5jHncXgkHP2BtwCdyJHuuFDGL4ZCn33xhmE7z0pknb1SEl9yz1ErISQEfIYJ9s30"
+"SfkNOIT2SYVnY3VGPYXV4QKBgB8k3n1Mku190IdMgErhW4WQwm7hqS5/6dd5HsZA"
+"rvbosHvaB+1c63yyGuGs55wGcy9Ht4WN6DbJipBuS6sRBjCB34J7eBZ2Th2bSHPP"
+"xWdJ/HPfMwOTtUQsG/IwLCKJ0+jMWfsEqlac3b644z8kQcBa0ZAhYGetaqgrzx6z"
+"iJ31AoGAfppHsi+slF43MPxi+sAnTu8xzWNLrhMamFsKlHJRRvl4cy6jHFi2lKen"
+"6CQh9JSmgoSS89zVNZW2SizVx45M5Jkqgllj8m9rKrnaZ/xSn3dT5FEvePVp5e4Q"
+"JxKtuOSdd+xZFjkUkz1O0LY5ej7Dn5Lmpk/FRlpCvMWURVHjm90="
+"-----END RSA PRIVATE KEY-----";
+
+char_t aws_cert[] =
+"-----BEGIN CERTIFICATE-----"
+"MIIBtjCCAVugAwIBAgITBmyf1XSXNmY/Owua2eiedgPySjAKBggqhkjOPQQDAjA5"
+"MQswCQYDVQQGEwJVUzEPMA0GA1UEChMGQW1hem9uMRkwFwYDVQQDExBBbWF6b24g"
+"Um9vdCBDQSAzMB4XDTE1MDUyNjAwMDAwMFoXDTQwMDUyNjAwMDAwMFowOTELMAkG"
+"A1UEBhMCVVMxDzANBgNVBAoTBkFtYXpvbjEZMBcGA1UEAxMQQW1hem9uIFJvb3Qg"
+"Q0EgMzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABCmXp8ZBf8ANm+gBG1bG8lKl"
+"ui2yEujSLtf6ycXYqm0fc4E7O5hrOXwzpcVOho6AF2hiRVd9RFgdszflZwjrZt6j"
+"QjBAMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGGMB0GA1UdDgQWBBSr"
+"ttvXBp43rDCGB5Fwx5zEGbF4wDAKBggqhkjOPQQDAgNJADBGAiEA4IWSoxe3jfkr"
+"BqWTrBqYaGFy+uGh0PsceGCmQ5nFuMQCIQCcAu/xlJyzlvnrxir4tiz+OpAUFteM"
+"YyRIHN8wfdVoOw=="
+"-----END CERTIFICATE-----"
+"-----BEGIN CERTIFICATE-----"
+"MIIDWjCCAkKgAwIBAgIVAJwyjCGkn+UJ77erQNSIDUXZq4sHMA0GCSqGSIb3DQEB"
+"CwUAME0xSzBJBgNVBAsMQkFtYXpvbiBXZWIgU2VydmljZXMgTz1BbWF6b24uY29t"
+"IEluYy4gTD1TZWF0dGxlIFNUPVdhc2hpbmd0b24gQz1VUzAeFw0xOTA4MDEyMjMx"
+"MzdaFw00OTEyMzEyMzU5NTlaMB4xHDAaBgNVBAMME0FXUyBJb1QgQ2VydGlmaWNh"
+"dGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDWP+XmtJl9a4XXOHey"
+"sKN2bpxNLVmitygghemHnttWNQ3u5Flfqb7ct5R5DXSvcVQQ1qZe3Lo4rq+ymfLb"
+"ESW6Yg2iktyVDr0CcCxNKBVknEBJ9+IhMzFfqXWSmaaYh5i52aDuPIGpF2RBFOiC"
+"CN134uygrofp9LNpzF9j1qwRmR4wGfm9MMW2dgp85I+80C4Cr9SNlF9zaERfcU23"
+"O8fiLlhaNNezl49nt6HVCtOWXBwtz1Vpd18BYH3HlXKHmqehIMtPsbgLVHYmlcI9"
+"0KJiesWF5czHmUQUPm5+JG1w0HtZeycMdr7JP3yT6pOd3P9gmOnS5PZ0UD8utp8N"
+"WCUzAgMBAAGjYDBeMB8GA1UdIwQYMBaAFBSrVZWWsOtAmgy0ojFNIg2jTKX/MB0G"
+"A1UdDgQWBBRI3licNixsYjasbu8Gzsbt51UjfjAMBgNVHRMBAf8EAjAAMA4GA1Ud"
+"DwEB/wQEAwIHgDANBgkqhkiG9w0BAQsFAAOCAQEAfsPc6DcN0rcPgRwfNY4sdjYE"
+"i6HTRaARtdE+D3NWBBfPiE+p80aghFIp/ltx/AddxQTGTls2NGU+YtgCpR2WgcVY"
+"Kt9zyN34aLs/Ctdme/F7vGNroFW8WE38S3JX7CBO1Mq2v5F5WuSoBgFIkCKmQDI4"
+"V1UuTTvudJdr9XjvykQb+X0Gp0GfAjt/v0qLV39lMFa8ZtHInDKtdt97X8cv67bY"
+"eoiZbS8XpGEKYYLAjotWFL6ctcZkyg8Lpieu2uwSqFf+Lt3Ayj27GomfEqjx1ngv"
+"rA7cum2zY7ai0ooXvVVVnxYsZu84F8Zm2y8gZmS/imcPewqQIfqPRUdv7+otuw=="
+"-----END CERTIFICATE-----";
+#endif
+
+
 
 //Global variables
 DhcpClientSettings dhcpClientSettings;
@@ -255,7 +315,7 @@ void certStoreInit(void)
 	
 	char signer_pem[1024]; size_t signer_size_pem = sizeof(signer_pem);
 	status = atcacert_encode_pem_cert(certsigner, signer_size, signer_pem, &signer_size_pem); CHECK_STATUS(status)
-	printf("Cert PEM [%d]\n%s\n", strlen(signer_pem), signer_pem);
+	printf("Signer cert PEM [%d]\n%s\n", strlen(signer_pem), signer_pem);
 	
 	//printf("Public key [%d]\n", sizeof(signerPubkey));
 	//print_bytes(signerPubkey, sizeof(signerPubkey));
@@ -272,7 +332,7 @@ void certStoreInit(void)
 	CHECK_STATUS(status);
 	status = atcacert_encode_pem_cert(certdevice, device_size, device_pem, &device_size_pem);
 	 CHECK_STATUS(status)
-	//printf("Cert PEM [%d]\n%s\n", strlen(device_pem), device_pem);
+	printf("Device cert PEM [%d]\n%s\n", strlen(device_pem), device_pem);
 	//printf("Public key [%d]\n", sizeof(devicePubkey));
 	//print_bytes(devicePubkey, sizeof(devicePubkey));
 	status = atcacert_verify_cert_hw(&g_tngtn_cert_def_2_device, certdevice, device_size, signerPubkey); 
@@ -311,6 +371,7 @@ error_t webSocketRngCallback(uint8_t *data, size_t length)
 error_t mqttTestTlsInitCallback(MqttClientContext *context,
    TlsContext *tlsContext)
 {
+	
    error_t error;
 	//Debug message
 	TRACE_INFO("MQTT: TLS initialization callback\r\n");
@@ -354,7 +415,7 @@ error_t mqttTestTlsInitCallback(MqttClientContext *context,
 
 	//TODO
 	//Import the client's certificate
-	error = tlsAddCertificate(tlsContext, certChain, strlen(certChain), NULL, 0);
+	error = tlsAddCertificate(tlsContext, aws_cert, strlen(aws_cert), aws_pri_key, strlen(aws_pri_key));
 	//Any error to report?
 	if(error){
 		TRACE_INFO("Err: add certchain [%d]\n", error);
@@ -503,17 +564,24 @@ error_t mqttTestConnect(void)
 
    //Debug message
    TRACE_INFO("Connecting to MQTT server %s...\r\n", ipAddrToString(&ipAddr, NULL));
-
+	uint8_t retry = 3;
    //Start of exception handling block
    do
    {
-      //Establish connection with the MQTT server
-      error = mqttClientConnect(&mqttClientContext,
-         &ipAddr, APP_SERVER_PORT, TRUE);
-      //Any error to report?
-      if(error)
+
+	//Establish connection with the MQTT server
+	error = mqttClientConnect(&mqttClientContext,
+	&ipAddr, APP_SERVER_PORT, TRUE);
+	//Any error to report?
+	
+	if(error){
 		TRACE_INFO("MQTT connect error: [%d]\r\n", error);
-         break;
+		break;
+	}
+		
+
+	   
+     
 
       //Subscribe to the desired topics
       error = mqttClientSubscribe(&mqttClientContext,
